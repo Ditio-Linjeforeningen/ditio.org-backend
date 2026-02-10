@@ -2,7 +2,8 @@ name: Build and push to Docker Hub with :candidate tag
 
 on:
   push:
-    - 'release/*'
+    branches:
+      - 'release/*'
 
 jobs:
   build-test-push:
