@@ -1,9 +1,8 @@
-name: Build and push to Docker Hub with :dev tag
+name: Build and push to Docker Hub with :candidate tag
 
 on:
-  workflow_dispatch:
   push:
-    branches: [main]
+    - 'release/*'
 
 jobs:
   build-test-push:
@@ -63,7 +62,7 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKERHUB_PROJECT_NAME }}:dev
+            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKERHUB_PROJECT_NAME }}:candidate
             ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKERHUB_PROJECT_NAME }}:${{ steps.meta.outputs.SHORT_SHA }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
