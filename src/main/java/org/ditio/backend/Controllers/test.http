@@ -1,0 +1,25 @@
+GET http://localhost:8080/items
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "New Item",
+  "quantity": 5
+}
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "Item 2",
+  "quantity": 0
+}
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "A third item",
+  "quantity": 50
+}
