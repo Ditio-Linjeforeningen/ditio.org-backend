@@ -17,6 +17,7 @@
           packages = with pkgs; [
             jdk25_headless
             maven
+            docker_28
           ];
         };
       };
