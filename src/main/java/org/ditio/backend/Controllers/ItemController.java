@@ -2,13 +2,18 @@ package org.ditio.backend.Controllers;
 
 import org.ditio.backend.Entities.Item;
 import org.ditio.backend.Repositories.ItemRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/items")
+
 public class ItemController {
 
     private final ItemRepository repository;
@@ -36,4 +41,28 @@ public class ItemController {
     public Item createItem(@RequestBody Item item) {
         return repository.save(item);
     }
+
+    /*@DeleteMapping("/{id}")
+    public Item deleteItem(@PathVariable UUID id) {
+        return repository.deleteById(id);
+        
+    }*/
+//Fungerer:
+       /* @DeleteMapping("/{id}")
+        public ResponseEntity<Item>deleteItem(@PathVariable UUID id){
+           Item item = repository.findById(id)
+             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
+           repository.delete(item);
+           return ResponseEntity.ok(item);
+            
+        }*/
+
+      /*    @DeleteMapping("/{id}")
+    public String deleteItem(@PathVariable UUID id) {
+        repository.findById(id);
+        repository.deleteById(id);
+        return "Item is deleted";
+        
+    }
+    */
 }
