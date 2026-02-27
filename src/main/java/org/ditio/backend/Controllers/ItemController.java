@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -48,14 +47,14 @@ public class ItemController {
         
     }*/
 //Fungerer:
-       /* @DeleteMapping("/{id}")
+  @DeleteMapping("/{id}")
         public ResponseEntity<Item>deleteItem(@PathVariable UUID id){
            Item item = repository.findById(id)
              .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
            repository.delete(item);
            return ResponseEntity.ok(item);
-            
-        }*/
+        
+        }
 
       /*    @DeleteMapping("/{id}")
     public String deleteItem(@PathVariable UUID id) {
