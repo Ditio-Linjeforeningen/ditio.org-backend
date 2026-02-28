@@ -99,7 +99,8 @@
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-actuator</artifactId>
 </dependency>
- 
+
+<!--OTP: http://localhost:8080/otp.html-->
 	</dependencies>
 
 	<build>
