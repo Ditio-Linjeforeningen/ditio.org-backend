@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <title>OTP Dev</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; }
+    .code { font-size: 2rem; font-weight: bold; letter-spacing: 0.2rem; }
+    .ok { color: #0a0; }
+    .err { color: #a00; }
+  </style>
+</head>
+<body>
+  <h1>OTP (dev)</h1>
+  <div>Nåværende kode: <span id="code" class="code">-</span></div>
+  <div>Utløper om: <span id="countdown">-</span></div>
+
+  <hr />
+  <label for="input">Skriv inn kode:</label>
+  <input id="input" autocomplete="one-time-code" />
+  <button id="btn">Verifiser</button>
+  <div id="result"></div>
+
+  <script>
+    let expiresAt = null;
+    const codeEl = document.getElementById('code');
+    const countdownEl = document.getElementById('countdown');
+    const inputEl = document.getElementById('input');
+    const resultEl = document.getElementById('result');
+    const btn = document.getElementById('btn');
+
+    async function fetchCurrent() {
+      try {
+        const res = await fetch('/dev/otp/current', { cache: 'no-store' });
+        const data = await res.json();
+        codeEl.textContent = data.code;
+        expiresAt = Date.parse(data.expiresAt);
+      } catch (e) {
+        codeEl.textContent = 'Feil ved henting';
+        expiresAt = null;
+      }
+    }
+
+    function tick() {
+      if (!expiresAt) { countdownEl.textContent = '-'; return; }
+      const ms = expiresAt - Date.now();
+      const sec = Math.max(0, Math.floor(ms / 1000));
+      countdownEl.textContent = sec + 's';
+    }
+
+    async function verify() {
+      resultEl.textContent = 'Verifiserer...';
+      try {
+        const res = await fetch('/dev/otp/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: inputEl.value.trim() })
+        });
+        const data = await res.json();
+        if (data.valid) { resultEl.textContent = 'Gyldig kode'; resultEl.className = 'ok'; }
+        else { resultEl.textContent = 'Ugyldig kode'; resultEl.className = 'err'; }
+      } catch (e) {
+        resultEl.textContent = 'Feil ved verifisering'; resultEl.className = 'err';
+      }
+    }
+
+    btn.addEventListener('click', verify);
+    fetchCurrent();                  // hent med en gang
+    setInterval(fetchCurrent, 1000); // poll hvert sekund for ny kode
+    setInterval(tick, 250);          // oppdater nedtellingen
+  </script>
+</body>
+</html>
