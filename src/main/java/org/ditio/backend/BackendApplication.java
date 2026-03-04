@@ -1,6 +1,5 @@
 package org.ditio.backend;
 
-import org.flywaydb.core.Flyway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,6 +12,7 @@ public class BackendApplication {
 		
 		
 		
+		/*
 		String Dburl  = System.getenv("SPRING_DATASOURCE_URL");
 		String username = System.getenv("POSTGRES_USER");
 		String password = System.getenv("POSTGRES_PASSWORD");
@@ -22,7 +22,8 @@ public class BackendApplication {
 		.load();
 		
 		// Start the migration
-		flyway.migrate();
+		flyway.migrate(); 
+		*/
 	}
 	
 
