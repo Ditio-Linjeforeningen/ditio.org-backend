@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @GetMapping("/test")
+    @GetMapping("/feide/test")
     public String test(@AuthenticationPrincipal OidcUser user) {
         return "Gratulerer! Du er logget inn som: " + user.getFullName() + " (" + user.getEmail() + ")";
     }

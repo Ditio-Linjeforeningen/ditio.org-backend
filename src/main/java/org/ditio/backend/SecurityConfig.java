@@ -13,14 +13,14 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/test").authenticated() // Require login for /test
+                .requestMatchers("/feide/test").authenticated() // Require login for /feide/test
                 .anyRequest().permitAll()  // allow all endpoints
             )
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/test", true) // Enable OAuth2 Login
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) // Enable OAuth2 Login
            .redirectionEndpoint(redirection -> redirection
                 .baseUri("/login/callback") 
             )
-            .defaultSuccessUrl("/test", true)
+            .defaultSuccessUrl("/feide/test", true)
         );
 
         return http.build();
