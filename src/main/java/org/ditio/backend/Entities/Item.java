@@ -17,12 +17,17 @@ public class Item {
     @Column(nullable = false)
     private int quantity = 0;
 
+    @Column(nullable = false)
+    private String origin; 
+
+
     // Constructors
     public Item() {}
 
-    public Item(String name, int quantity) {
+    public Item(String name, int quantity, String origin) {
         this.name = name;
         this.quantity = quantity;
+        this.origin = origin;
     }
 
     // Getters & Setters
@@ -34,4 +39,8 @@ public class Item {
 
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    public String getOrigin() {return origin;}
+    public void setOrigin(String origin) {this.origin = origin; }
+
 }
