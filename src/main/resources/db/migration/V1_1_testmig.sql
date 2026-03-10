@@ -1,0 +1,3 @@
+ALTER TABLE item(
+ADD origin TEXT NOT NULL
+)
