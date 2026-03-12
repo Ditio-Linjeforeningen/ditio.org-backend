@@ -30,6 +30,7 @@ public class ItemController {
     // GET single item by id
     //Testcommit
     @GetMapping("/{id}")
+
     public Item getItem(@PathVariable UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Item not found"));
@@ -41,12 +42,7 @@ public class ItemController {
         return repository.save(item);
     }
 
-    /*@DeleteMapping("/{id}")
-    public Item deleteItem(@PathVariable UUID id) {
-        return repository.deleteById(id);
-        
-    }*/
-//Fungerer:
+
   @DeleteMapping("/{id}")
         public ResponseEntity<Item>deleteItem(@PathVariable UUID id){
            Item item = repository.findById(id)
@@ -56,12 +52,5 @@ public class ItemController {
         
         }
 
-      /*    @DeleteMapping("/{id}")
-    public String deleteItem(@PathVariable UUID id) {
-        repository.findById(id);
-        repository.deleteById(id);
-        return "Item is deleted";
-        
-    }
-    */
 }
+//https://stackoverflow.com/questions/72990030/springboot-how-to-pass-data-from-one-controller-to-another
