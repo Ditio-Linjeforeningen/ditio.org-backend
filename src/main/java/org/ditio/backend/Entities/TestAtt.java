@@ -6,8 +6,6 @@ package org.ditio.backend.Entities;
 import jakarta.persistence.*;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 @Table(name = "testAtt")
 public class TestAtt {
