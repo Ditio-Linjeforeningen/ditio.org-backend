@@ -10,10 +10,18 @@ import java.time.Clock;
 import java.time.Instant;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 @RestController
 @RequestMapping("/dev/otp")
 @Profile("dev") // kun aktiv i dev
+@Service
 public class DevOtpController {
+
+     private static final Logger logger = LoggerFactory.getLogger(DevOtpController.class);
+
 
     private static final int STEP_SECONDS = 30;
 
@@ -46,4 +54,22 @@ public class DevOtpController {
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
         return ResponseEntity.ok(Map.of("true", valid));
     }
+
+    @PostMapping("/verify2")
+    public boolean verify2(@RequestBody Map<String, String> body) {
+        String input = body.getOrDefault("code", "").trim();
+
+        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
+        if(valid == true){
+            System.out.print("Input og kode matcher");
+            boolean passOk = true;
+
+            return "redirect:/Register_Att_Status/{id}?isEnabled=" + passOk != null;
+        }
+        else{
+            //System.out.print("Input og kode matcher IKKE");
+            return false;
+        }
+    }
+
 }

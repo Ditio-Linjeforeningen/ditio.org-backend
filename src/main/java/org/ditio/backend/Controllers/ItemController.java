@@ -42,6 +42,11 @@ public class ItemController {
         return repository.save(item);
     }
 
+    @PutMapping
+    public Item editItem(@PathVariable UUID id){
+        return null;
+        
+    }
 
   @DeleteMapping("/{id}")
         public ResponseEntity<Item>deleteItem(@PathVariable UUID id){
