@@ -8,6 +8,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    private final UserDB userDB;
+
+    // Spring will automatically inject your UserDB service here
+    public SecurityConfig(UserDB userDB) {
+        this.userDB = userDB;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
