@@ -89,37 +89,21 @@ public class TestAttController {
         }
 
 //OTP
-@GetMapping("/current")
-    public Map<String, Object> current() {
-        long now = Instant.now(clock).getEpochSecond();
-        String code = TimeBasedOnetimePassword.generateTOTP(secretBase32);
-
-        long remaining = STEP_SECONDS - (now % STEP_SECONDS);
-        Instant expiresAt = Instant.ofEpochSecond(now + remaining);
-
-        return Map.of("code", code, "expiresAt", expiresAt.toString());
-    }
-
-    @PostMapping("/verify")
-    public ResponseEntity<Map<String, Object>> verify(@RequestBody Map<String, String> body) {
-        String input = body.getOrDefault("code", "").trim();
-        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
-        return ResponseEntity.ok(Map.of("true", valid));
-    }
-
-    //Forsøk på å kombinere OTP validering og PUT endring av status 
+    //Sjekker om inputkode er lik true og endrer oppmøtestatus fra false til true. 
     //https://spring.io/guides/tutorials/rest
     @PutMapping("/verify2/{id}")
-    Optional<TestAtt> updateTestAtt(@RequestBody TestAtt testAtta, @RequestBody Map<String, String>body, @PathVariable UUID id) {
-        String input = body.getOrDefault("code", "").trim();
+    Optional<TestAtt> updateTestAtt(@RequestBody Map<String, Object>body, @PathVariable UUID id) {
+        String input = String.valueOf(body.getOrDefault("code", "")).trim();
 
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
         if(valid == true){
             System.out.print("Input og kode matcher");
 
+            Boolean newStatus = (Boolean) body.get("att_status");
             return repository.findById(id)
+
             .map(testAtt-> {
-                testAtt.setAtt_status(testAtta.getAtt_status());
+                testAtt.setAtt_status(Boolean.TRUE.equals(newStatus));
                 return repository.save(testAtt);
             });
         }
@@ -128,5 +112,7 @@ public class TestAttController {
             return null;
         }
     }
+
+
 
 }
