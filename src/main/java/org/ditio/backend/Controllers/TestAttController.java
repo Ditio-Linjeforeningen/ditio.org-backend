@@ -13,6 +13,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -93,10 +95,17 @@ public class TestAttController {
     //https://spring.io/guides/tutorials/rest
     @PutMapping("/verify2/{id}")
     Optional<TestAtt> updateTestAtt(@RequestBody Map<String, Object>body, @PathVariable UUID id) {
+        
         String input = String.valueOf(body.getOrDefault("code", "")).trim();
+        
+        //https://howtodoinjava.com/java/date-time/java-localdatetime-class/
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
+        LocalDateTime currentTime = LocalDateTime.now();
+        //If current-time is past getdeadline()
+
 
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
-        if(valid == true){
+        if(valid == true /* && deadline*/ ){
             System.out.print("Input og kode matcher");
 
             Boolean newStatus = (Boolean) body.get("att_status");

@@ -4,6 +4,8 @@
 package org.ditio.backend.Entities;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -23,14 +25,18 @@ public class TestAtt {
     @Column(nullable = false) //false inntil true
     private boolean att_status; 
 
+    @Column (nullable = false)
+    private LocalDateTime deadline;  
+
     // Constructors
     public TestAtt() {}
 
-    public TestAtt(UUID att_list_id, int event_id, String userIdString, boolean att_status) {
+    public TestAtt(UUID att_list_id, int event_id, String userIdString, boolean att_status, LocalDateTime deadline) {
         this.att_list_id = att_list_id;
         this.event_id = event_id;
         this.userIdString = userIdString;
         this.att_status = att_status;
+        this.deadline = deadline;
     }
 
     // Getters & Setters
@@ -45,5 +51,8 @@ public class TestAtt {
 
     public boolean getAtt_status() {return att_status;}
     public void setAtt_status(boolean att_status) {this.att_status = att_status; }
+
+    public LocalDateTime getDeadline() {return deadline;}
+    public void setDeadline(LocalDateTime deadline) {this.deadline = deadline; }
 
 }
