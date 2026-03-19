@@ -31,7 +31,7 @@ public class EventController {
     @GetMapping("/{eventId}")
     public Event getEvent(@PathVariable UUID eventId) {
         return eventRepository.findById(eventId)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
     }
 
     //POST new event
@@ -54,7 +54,7 @@ public class EventController {
                     event.setIsPublished(updatedEvent.getIsPublished());
                     return eventRepository.save(event);
                 })
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
     }
 
     @DeleteMapping("/{eventId}")
