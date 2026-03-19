@@ -8,9 +8,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    // forbindelse tiol UserDB for at kunne synkronisere brugerdata ved login
     private final UserDB userDB;
-
-    // Spring will automatically inject your UserDB service here
+    
     public SecurityConfig(UserDB userDB) {
         this.userDB = userDB;
     }
@@ -20,10 +20,10 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/feide/test").authenticated() // Require login for /feide/test
-                .anyRequest().permitAll()  // allow all endpoints
+                .requestMatchers("/feide/test").authenticated() // må logge ind for at komme /feide/test
+                .anyRequest().permitAll()  // tilgængeligt for alle andre endpoints
             )
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) // Enable OAuth2 Login
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) //OAuth2 Login
            .redirectionEndpoint(redirection -> redirection
                 .baseUri("/login/callback") 
             )

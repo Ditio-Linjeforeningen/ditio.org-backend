@@ -20,12 +20,12 @@ public class UserDB extends OidcUserService {
     public OidcUser loadUser(OidcUserRequest userRequest) {
         OidcUser oidcUser = super.loadUser(userRequest);
         
-        // 'sub' is the unique, stable identifier for a Feide user
+        // .getSubject() er et unikt id fra Feide, som kan bruges som primær nøgle
         String feideId = oidcUser.getSubject(); 
         String name = oidcUser.getFullName();
         String email = oidcUser.getEmail();
 
-        // Sync to Database: Find or Create/Update
+        // synkroniser til database, enten oppdatere bruger eller lave en ny
         User user = userRepository.findById(feideId)
                 .map(existingUser -> {
                     existingUser.setNavn(name);
