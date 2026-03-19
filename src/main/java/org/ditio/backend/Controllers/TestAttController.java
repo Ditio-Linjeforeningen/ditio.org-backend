@@ -120,8 +120,11 @@ public class TestAttController {
             //System.out.print("Input og kode matcher IKKE");
             return null;
         }
-    }
+    }}
+//PUT(KODE): curl -i --request PUT --json 
+// "{\"code\":\"1652\",\"att_status\":true}" 
+// "http://localhost:8080/testAtt/verify2/879f6b7a-c90f-49d7-b2a9-e6b3154af817"
 
 
+//curl --json "{\"event_id\": \"123\", \"userIdString\": "OlaNor123", \"att_status\": \"false\"}" http://localhost:8080/testAtt
 
-}
