@@ -1,5 +1,13 @@
+CREATE TABLE IF NOT EXISTS users (
+    id VARCHAR(255) PRIMARY KEY,
+    navn VARCHAR(255),
+    email VARCHAR(255)
+);
+
 CREATE TABLE IF NOT EXISTS item (
     id UUID PRIMARY KEY DEFAULT uuidv7(),
     name TEXT NOT NULL,
     quantity INTEGER NOT NULL DEFAULT 0
 );
+
+
