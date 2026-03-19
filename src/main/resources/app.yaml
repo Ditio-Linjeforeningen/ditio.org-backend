@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          feide:
+            client-id: ${FEIDE_CLIENT_ID}
+            client-secret: ${FEIDE_CLIENT_SECRET}
+            scope: openid, profile, email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/callback"
+        provider:
+          feide:
+            issuer-uri: https://auth.dataporten.no

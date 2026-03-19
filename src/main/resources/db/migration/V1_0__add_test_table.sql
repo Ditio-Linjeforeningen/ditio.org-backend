@@ -3,3 +3,5 @@ CREATE TABLE IF NOT EXISTS item (
     name TEXT NOT NULL,
     quantity INTEGER NOT NULL DEFAULT 0
 );
+
+
