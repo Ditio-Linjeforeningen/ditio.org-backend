@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Quarantine {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID quarantine_id;
 
     @Column(nullable = false)
@@ -40,15 +40,12 @@ public class Quarantine {
     public boolean getQuarantine_Status(){
         return quarantine_status;
     }
-
     public void setQuranatine_Status(boolean quarantine_status){
         this.quarantine_status=quarantine_status;
     }
-
     public LocalDate getQuarantine_end(){
         return quarantine_end.plusMonths(1);
     }
-
     public void setQuarantine_end(LocalDate quarantine_end){
         this.quarantine_end=quarantine_end;
     }

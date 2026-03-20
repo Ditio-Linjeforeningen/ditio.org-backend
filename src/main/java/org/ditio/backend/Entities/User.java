@@ -1,10 +1,13 @@
 package org.ditio.backend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -19,19 +22,27 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column (name = "quarantine_status", nullable = false)
+    @Column (nullable = true)
     private boolean quarantine_status;
     
     @OneToOne(mappedBy = "user")
     private Quarantine quarantine;
 
+
+// Avledet egenskap – ikke i user-DB, men vises i objekter/JSON
+    @Transient
+    @JsonProperty("quarantine_status")
+    public boolean isQuarantineStatus() {
+        return quarantine != null && quarantine.getQuarantine_Status();
+    }
+
+    
     public User() {}
 
-    public User(String feideId, String navn, String email, boolean quarantine_status) {
+    public User(String feideId, String navn, String email) {
         this.feideId = feideId;
         this.navn = navn;
         this.email = email;
-        this.quarantine_status=quarantine_status;
     }
 
     //Getters og Setters
@@ -59,10 +70,5 @@ public class User {
     public void setNavn(String navn) {
         this.navn = navn;
     }
-
-    public boolean getQuarantine_Status(){
-        return quarantine != null ? quarantine.getQuarantine_Status() : null;
-    }
-    //Setter når det er inni Quarantine.java?
 
 }
