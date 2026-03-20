@@ -18,8 +18,11 @@ public class Quarantine {
     @Column(nullable = false)
     private LocalDate quarantine_end;
 
+    /*@Column(nullable = false)
+    private LocalDate attendance_deadline;*/
 
-    //Fremmednøkkel til User.java
+
+    //Quarantine er FK inni User.java
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
     private User user;
@@ -27,10 +30,11 @@ public class Quarantine {
    
     public Quarantine() {}
 
-    public Quarantine(boolean quarantine_status, LocalDate quarantine_end, User user){
+    public Quarantine(boolean quarantine_status, LocalDate quarantine_end, User user /* , LocalDate attendance_deadline*/){
         this.quarantine_status=quarantine_status;
         this.quarantine_end=quarantine_end;
         this.user=user;
+       // this.attendance_deadline=attendance_deadline;
     }
 
     public boolean getQuarantine_Status(){
@@ -42,7 +46,7 @@ public class Quarantine {
     }
 
     public LocalDate getQuarantine_end(){
-        return quarantine_end;
+        return quarantine_end.plusMonths(1);
     }
 
     public void setQuarantine_end(LocalDate quarantine_end){
@@ -51,8 +55,16 @@ public class Quarantine {
 
     public String getFeideId(){
         return user != null ? user.getFeideId() : null;
-
     }
+    //For testing hardkodet
+    /*public LocalDate getAttendance_deadline(){
+        return attendance_deadline;
+    }
+
+    public void setAttendance_deadline(LocalDate attendance_deadline){
+        this.attendance_deadline=attendance_deadline;
+    }*/
+
     }
     
 

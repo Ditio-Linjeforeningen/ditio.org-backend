@@ -19,7 +19,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column (nullable = true)
+    @Column (name = "quarantine_status", nullable = false)
     private boolean quarantine_status;
     
     @OneToOne(mappedBy = "user")
@@ -27,10 +27,11 @@ public class User {
 
     public User() {}
 
-    public User(String feideId, String navn, String email) {
+    public User(String feideId, String navn, String email, boolean quarantine_status) {
         this.feideId = feideId;
         this.navn = navn;
         this.email = email;
+        this.quarantine_status=quarantine_status;
     }
 
     //Getters og Setters
@@ -58,5 +59,10 @@ public class User {
     public void setNavn(String navn) {
         this.navn = navn;
     }
+
+    public boolean getQuarantine_Status(){
+        return quarantine != null ? quarantine.getQuarantine_Status() : null;
+    }
+    //Setter når det er inni Quarantine.java?
 
 }
