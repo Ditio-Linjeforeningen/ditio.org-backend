@@ -3,6 +3,7 @@ package org.ditio.backend.Entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +18,12 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column (nullable = true)
+    private boolean quarantine_status;
+    
+    @OneToOne(mappedBy = "user")
+    private Quarantine quarantine;
 
     public User() {}
 
