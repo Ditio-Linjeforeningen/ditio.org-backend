@@ -1,4 +1,4 @@
-package org.ditio.backend.Service;
+/*package org.ditio.backend.Service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.ditio.backend.Entities.Quarantine;
@@ -80,4 +80,4 @@ public class QuarantineService {
                             .ifPresent(quarantineRepository::delete);
                 });
     }
-}
+}*/
