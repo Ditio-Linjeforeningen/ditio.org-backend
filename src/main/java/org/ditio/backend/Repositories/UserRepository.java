@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
+    //Optional<User> findByQuarantine_Quarantine_id(UUID quarantineId);
 }

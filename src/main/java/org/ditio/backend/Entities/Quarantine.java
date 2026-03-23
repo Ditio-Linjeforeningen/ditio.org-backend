@@ -10,58 +10,47 @@ public class Quarantine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "quarantine_id")
     private UUID quarantine_id;
 
     @Column(nullable = false)
-    private boolean quarantine_status;
+    private boolean does_quarantine_exist;
 
     @Column(nullable = false)
     private LocalDate quarantine_end;
 
-    /*@Column(nullable = false)
-    private LocalDate attendance_deadline;*/
-
-
-    //Quarantine er FK inni User.java
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
+    //bidireksjonal 1:1 forhold
+    @OneToOne(mappedBy = "quarantine", fetch = FetchType.LAZY)
     private User user;
-    
+
+    //Legg til FK for Attendance for Event-id (dato for q-slutt) fra sign-up
    
-    public Quarantine() {}
+    public Quarantine(boolean b, LocalDate quarantineEnd) {}
 
-    public Quarantine(boolean quarantine_status, LocalDate quarantine_end, User user /* , LocalDate attendance_deadline*/){
-        this.quarantine_status=quarantine_status;
+    public Quarantine(boolean does_quarantine_exist, LocalDate quarantine_end, User user){
+        this.does_quarantine_exist=does_quarantine_exist;
         this.quarantine_end=quarantine_end;
-        this.user=user;
-       // this.attendance_deadline=attendance_deadline;
+        this.user = user;
     }
 
-    public boolean getQuarantine_Status(){
-        return quarantine_status;
+    public boolean getDoes_quarantine_exist(){
+        return does_quarantine_exist;
     }
-    public void setQuranatine_Status(boolean quarantine_status){
-        this.quarantine_status=quarantine_status;
+    public void setDoes_quarantine_exist(boolean does_quarantine_exist){
+        this.does_quarantine_exist=does_quarantine_exist;
     }
     public LocalDate getQuarantine_end(){
-        return quarantine_end.plusMonths(1);
+        //Adds one month of quarantine from the event-date
+        return quarantine_end.plusMonths(1); 
     }
     public void setQuarantine_end(LocalDate quarantine_end){
         this.quarantine_end=quarantine_end;
     }
 
-    public String getFeideId(){
-        return user != null ? user.getFeideId() : null;
+    public void setUser(User user2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUser'");
     }
-    //For testing hardkodet
-    /*public LocalDate getAttendance_deadline(){
-        return attendance_deadline;
-    }
-
-    public void setAttendance_deadline(LocalDate attendance_deadline){
-        this.attendance_deadline=attendance_deadline;
-    }*/
-
     }
     
 
