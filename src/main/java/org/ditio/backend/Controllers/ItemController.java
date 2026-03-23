@@ -41,11 +41,6 @@ public class ItemController {
         return repository.save(item);
     }
 
-    /*@DeleteMapping("/{id}")
-    public Item deleteItem(@PathVariable UUID id) {
-        return repository.deleteById(id);
-        
-    }*/
 //Fungerer:
   @DeleteMapping("/{id}")
         public ResponseEntity<Item>deleteItem(@PathVariable UUID id){
@@ -55,13 +50,4 @@ public class ItemController {
            return ResponseEntity.ok(item);
         
         }
-
-      /*    @DeleteMapping("/{id}")
-    public String deleteItem(@PathVariable UUID id) {
-        repository.findById(id);
-        repository.deleteById(id);
-        return "Item is deleted";
-        
-    }
-    */
 }

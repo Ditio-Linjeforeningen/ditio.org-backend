@@ -1,13 +1,14 @@
 package org.ditio.backend.Entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+
 
 @Entity
 @Table(name = "users")
@@ -22,19 +23,15 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column (nullable = true)
-    private boolean quarantine_status;
-    
-    @OneToOne(mappedBy = "user")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = true, orphanRemoval = true)
+    @JoinColumn(name = "quarantine_id", referencedColumnName = "quarantine_id", nullable = true)
     private Quarantine quarantine;
 
+    //Quarantine.java er FK til User.java
+    /*@OneToOne(mappedBy = "users", fetch = FetchType.LAZY)
+    @JoinColumn(name = "quarantine")
+    private Quarantine quarantine; */
 
-// Avledet egenskap – ikke i user-DB, men vises i objekter/JSON
-    @Transient
-    @JsonProperty("quarantine_status")
-    public boolean isQuarantineStatus() {
-        return quarantine != null && quarantine.getQuarantine_Status();
-    }
 
     
     public User() {}
@@ -70,5 +67,8 @@ public class User {
     public void setNavn(String navn) {
         this.navn = navn;
     }
+
+    public Quarantine getQuarantine() { return quarantine; }
+    public void setQuarantine(Quarantine quarantine) { this.quarantine = quarantine; }
 
 }

@@ -37,7 +37,7 @@ public class QuarantineController {
     }
 
     // POST new item
-    //If Att_status = false og date = passed (activate this method)
+    //If Att_status = false og date = passed (activate this method) with a trigger
     @PostMapping
     public Quarantine createQuarantine(@RequestBody Quarantine quarantine) {
         return repository.save(quarantine);
