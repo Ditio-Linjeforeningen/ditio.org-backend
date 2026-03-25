@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+/*package org.ditio.backend.Controllers;
 
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Repositories.UserRepository;
@@ -50,4 +50,4 @@ public class UserController2 {
            return ResponseEntity.ok(user);
         
         }
-}
+}*/

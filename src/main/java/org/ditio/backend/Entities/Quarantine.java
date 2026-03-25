@@ -25,9 +25,9 @@ public class Quarantine {
 
     //Legg til FK for Attendance for Event-id (dato for q-slutt) fra sign-up
    
-    public Quarantine(boolean b, LocalDate quarantineEnd) {}
+    public Quarantine() {}
 
-    public Quarantine(boolean does_quarantine_exist, LocalDate quarantine_end, User user){
+    public Quarantine(boolean does_quarantine_exist, LocalDate quarantine_end, User user /*, User user*/){
         this.does_quarantine_exist=does_quarantine_exist;
         this.quarantine_end=quarantine_end;
         this.user = user;

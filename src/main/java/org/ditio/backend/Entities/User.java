@@ -23,7 +23,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = true, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, /*or refresh*/ optional = true, orphanRemoval = true)
     @JoinColumn(name = "quarantine", referencedColumnName = "quarantine_id", nullable = true)
     private Quarantine quarantine;
 
@@ -69,6 +69,9 @@ public class User {
     }
 
     public Quarantine getQuarantine() { return quarantine; }
-    public void setQuarantine(Quarantine quarantine) { this.quarantine = quarantine; }
+    //public void setQuarantine(Quarantine quarantine) { this.quarantine = quarantine; }
 
 }
+//https://medium.com/@myggona/spring-boot-persistence-context-b112bc7382df
+//https://www.baeldung.com/spring-data-jpa-refresh-fetch-entity-after-save
+//https://medium.com/@ndhamani2002/handling-outdated-data-in-jpa-persistence-context-after-native-queries-ea1b10ce1d88
