@@ -24,7 +24,7 @@ public class User {
     private String email;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, optional = true, orphanRemoval = true)
-    @JoinColumn(name = "quarantine_id", referencedColumnName = "quarantine_id", nullable = true)
+    @JoinColumn(name = "quarantine", referencedColumnName = "quarantine_id", nullable = true)
     private Quarantine quarantine;
 
     //Quarantine.java er FK til User.java

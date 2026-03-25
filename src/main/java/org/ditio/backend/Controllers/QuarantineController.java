@@ -1,5 +1,5 @@
 // QuarantineController.java
-package org.ditio.backend.Controllers;
+/*package org.ditio.backend.Controllers;
 
 import org.ditio.backend.Entities.Quarantine;
 import org.ditio.backend.Service.QuarantineService;
@@ -55,9 +55,9 @@ public class QuarantineController {
         quarantineService.endQuarantineForUser(feideId);
         return ResponseEntity.noContent().build();
     }
-}
+}*/
 
-/*package org.ditio.backend.Controllers;
+package org.ditio.backend.Controllers;
 import org.ditio.backend.Entities.Quarantine;
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Repositories.QuarantineRepository;
@@ -92,7 +92,7 @@ public class QuarantineController {
     @GetMapping("/{id}")
     public Quarantine getQuarantine(@PathVariable UUID id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Item not found"));
+                .orElseThrow(() -> new RuntimeException("Quarantine not found"));
     }
 
     // POST new item
@@ -113,4 +113,3 @@ public class QuarantineController {
 
      
 }
-*/

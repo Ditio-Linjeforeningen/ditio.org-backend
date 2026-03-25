@@ -47,10 +47,7 @@ public class Quarantine {
         this.quarantine_end=quarantine_end;
     }
 
-    public void setUser(User user2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUser'");
-    }
+
     }
     
 
