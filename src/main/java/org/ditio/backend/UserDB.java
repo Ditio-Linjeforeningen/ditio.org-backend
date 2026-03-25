@@ -16,7 +16,7 @@ public class UserDB extends OidcUserService {
         this.userRepository = userRepository;
     }
 
-    @Override
+    @Override   
     public OidcUser loadUser(OidcUserRequest userRequest) {
         OidcUser oidcUser = super.loadUser(userRequest);
         
