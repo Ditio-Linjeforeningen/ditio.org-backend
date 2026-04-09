@@ -57,9 +57,10 @@ public class QuarantineController {
     }
 }*/
 
+/* DENNE BRUKES
 package org.ditio.backend.Controllers;
 import org.ditio.backend.Entities.Quarantine;
-import org.ditio.backend.Entities.User;
+//import org.ditio.backend.Entities.User;
 import org.ditio.backend.Repositories.QuarantineRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -113,3 +114,4 @@ public class QuarantineController {
 
      
 }
+*/
