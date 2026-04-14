@@ -1,5 +1,7 @@
 package org.ditio.backend;
 
+import java.time.LocalDateTime;
+
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Repositories.UserRepository;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -24,6 +26,7 @@ public class UserDB extends OidcUserService {
         String feideId = oidcUser.getSubject(); 
         String name = oidcUser.getFullName();
         String email = oidcUser.getEmail();
+        LocalDateTime qurantine_until = null;
 
         // synkroniser til database, enten oppdatere bruger eller lave en ny
         User user = userRepository.findById(feideId)
@@ -32,7 +35,7 @@ public class UserDB extends OidcUserService {
                     existingUser.setEmail(email);
                     return userRepository.save(existingUser);
                 })
-                .orElseGet(() -> userRepository.save(new User(feideId, name, email)));
+                .orElseGet(() -> userRepository.save(new User(feideId, name, email, qurantine_until )));
 
         return oidcUser;
     }

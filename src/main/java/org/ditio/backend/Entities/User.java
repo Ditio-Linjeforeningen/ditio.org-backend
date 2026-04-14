@@ -1,5 +1,7 @@
 package org.ditio.backend.Entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "quranatine_until")
+    private LocalDateTime quarantine_until;
+
     //@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, /*or refresh*/ optional = true, orphanRemoval = true)
     /*@JoinColumn(name = "quarantine", referencedColumnName = "quarantine_id", nullable = true)
     private Quarantine quarantine;*/
@@ -36,10 +41,11 @@ public class User {
     
     public User() {}
 
-    public User(String feideId, String navn, String email) {
+    public User(String feideId, String navn, String email, LocalDateTime quarantine_until) {
         this.feideId = feideId;
         this.navn = navn;
         this.email = email;
+        this.quarantine_until = quarantine_until;
     }
 
     //Getters og Setters
@@ -66,6 +72,14 @@ public class User {
 
     public void setNavn(String navn) {
         this.navn = navn;
+    }
+
+    public LocalDateTime getQurantine_until(){
+        return quarantine_until;
+    }
+
+    public void setQuarantine_until(){
+        this.quarantine_until = quarantine_until;
     }
 
     /*public Quarantine getQuarantine() { return quarantine; }
