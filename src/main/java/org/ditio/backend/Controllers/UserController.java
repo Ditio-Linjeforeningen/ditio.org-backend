@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +34,10 @@ public class UserController {
 
     // finder alle brugere som er registret i databasen
     // MÅ BESKYTTES BAK ADMIN LOGIN
+    
     @GetMapping("/all")
-    public List<User> getAllUsers() {
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    public List<User> getAllUsers(@AuthenticationPrincipal OidcUser principal) {
         return userRepository.findAll();
     }
 
