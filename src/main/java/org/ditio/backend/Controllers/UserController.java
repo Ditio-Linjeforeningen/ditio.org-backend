@@ -32,6 +32,13 @@ public class UserController {
         return userRepository.findById(id); 
     }
 
+    //Finder bruger baseret på e-mail
+    @GetMapping("/{email}")
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    public Optional<User> getUserByEmail(@PathVariable("email") String email) {
+        return userRepository.findByEmail(email); 
+    }
+
     // finder alle brugere som er registret i databasen
     // MÅ BESKYTTES BAK ADMIN LOGIN
     
