@@ -21,7 +21,9 @@ import java.time.LocalDateTime;
     @JoinColumn(name = "feide_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
+}
+
+   /* @Enumerated(EnumType.STRING)
     @Column(name = "status")  //confirmed, waitlist, attended, no-show)
     private EventRegStatus status = EventRegStatus.EVENTREG;
 
@@ -31,7 +33,9 @@ import java.time.LocalDateTime;
 
     public EventReg() {
     }
-}
+
+    */
+
 
 
 
