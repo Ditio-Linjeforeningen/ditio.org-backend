@@ -59,8 +59,7 @@ public class UserDB extends OidcUserService {
 
         } catch (Exception e) {
             //feilhåndtering og logging
-            System.err.println("!!! FEJL I UserDB.java !!!");
-            System.err.println("Besked: " + e.getMessage());
+            System.err.println(e.getMessage());
             return oidcUser;
         }
     }
