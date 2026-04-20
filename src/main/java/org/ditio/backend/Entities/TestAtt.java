@@ -29,7 +29,7 @@ public class TestAtt {
     private AttValues att_status; 
 
     @Column (nullable = false)
-    private LocalDateTime deadline;  
+    private LocalDateTime deadline;   
 
     // Constructors
     public TestAtt() {}
