@@ -21,7 +21,7 @@ public class TestAtt {
     private String userIdString;
 
     @Column(nullable = false) //false inntil true
-    private boolean att_status; 
+    private Enum<?> att_status; 
 
     @Column (nullable = false)
     private LocalDateTime deadline;  
@@ -29,7 +29,7 @@ public class TestAtt {
     // Constructors
     public TestAtt() {}
 
-    public TestAtt(UUID att_list_id, int event_id, String userIdString, boolean att_status, LocalDateTime deadline) {
+    public TestAtt(UUID att_list_id, int event_id, String userIdString, Enum<?> att_status, LocalDateTime deadline) {
         this.att_list_id = att_list_id;
         this.event_id = event_id;
         this.userIdString = userIdString;
@@ -47,8 +47,8 @@ public class TestAtt {
     public String getUserIdString() { return userIdString; }
     public void setUserIdString(String userIdString) { this.userIdString = userIdString; }
 
-    public boolean getAtt_status() {return att_status;}
-    public void setAtt_status(boolean att_status) {this.att_status = att_status; }
+    public Enum<?> getAtt_status() {return att_status;}
+    public void setAtt_status(Enum<?> att_status) {this.att_status = att_status; }
 
     public LocalDateTime getDeadline() {return deadline;}
     public void setDeadline(LocalDateTime deadline) {this.deadline = deadline; }
