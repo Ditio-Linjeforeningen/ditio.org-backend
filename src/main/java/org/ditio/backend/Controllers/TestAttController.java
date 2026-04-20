@@ -3,6 +3,7 @@ package org.ditio.backend.Controllers;
 
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.TestAtt;
+import org.ditio.backend.Entities.TestAtt.AttValues;
 import org.ditio.backend.Repositories.TestAttRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -99,8 +100,8 @@ public class TestAttController {
         String input = String.valueOf(body.getOrDefault("code", "")).trim();
         
         //https://howtodoinjava.com/java/date-time/java-localdatetime-class/
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
-        LocalDateTime currentTime = LocalDateTime.now();
+        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
+        LocalDateTime currentTime = LocalDateTime.now();*/
         //If current-time is past getdeadline()
 
 
@@ -108,11 +109,9 @@ public class TestAttController {
         if(valid == true /* && deadline*/ ){
             System.out.print("Input og kode matcher");
 
-            Boolean newStatus = (Boolean) body.get("att_status");
             return repository.findById(id)
-
             .map(testAtt-> {
-                testAtt.setAtt_status(Boolean.TRUE.equals(newStatus));
+                testAtt.setAttStatus(AttValues.Deltatt);
                 return repository.save(testAtt);
             });
         }
