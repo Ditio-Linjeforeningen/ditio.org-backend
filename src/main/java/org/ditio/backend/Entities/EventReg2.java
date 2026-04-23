@@ -2,20 +2,48 @@ package org.ditio.backend.Entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.ditio.backend.Enums.Attendance_Values;
 
 @Entity
     @Table(name = "event_reg2")
     public class EventReg2 {
 
-    @ManyToOne
-    @MapsId("eventId")
-    @JoinColumn(name = "event_id")
+    @Id
+    @GeneratedValue
+    private UUID event_reg_id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "event_id", nullable = false)
     private Event event;
 
-    @ManyToOne
-    @MapsId("feideId")
-    @JoinColumn(name = "feide_id")
-    private User user;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    
+    private Attendance_Values att_status; 
+
+    public EventReg2(UUID event_reg_id, /*String feideId,*/ Attendance_Values att_status) {
+        this.event_reg_id = event_reg_id;
+        //this.feideId = feideId;
+        this.att_status = att_status;  
+    }
+    
+    public UUID getEventRegId(){return event_reg_id;}
+    public void setEventRegId(UUID eventRegId) { this.event_reg_id = event_reg_id; }
+
+    public String getFeideId() { return getFeideId(); }
+    //public void setFeideId(String feideId) { this.feideId = feideId; }
+
+    public Attendance_Values getAttStatus(){return att_status;}
+    public void setAttStatus(Attendance_Values att_status){ this.att_status = att_status;}
+
+
+
 
 }
