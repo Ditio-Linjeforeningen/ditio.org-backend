@@ -25,6 +25,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/feide/test").authenticated() // må logge ind for at komme /feide/test
+                
                 .anyRequest().permitAll()  // tilgængeligt for alle andre endpoints
             )
                 .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) //OAuth2 Login
