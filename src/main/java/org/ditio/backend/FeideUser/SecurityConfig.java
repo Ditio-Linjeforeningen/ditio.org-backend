@@ -24,9 +24,20 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/feide/test").authenticated() // må logge ind for at komme /feide/test
+                //Alle kan se events
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/events/**").permitAll()
                 
-                .anyRequest().permitAll()  // tilgængeligt for alle andre endpoints
+                // Event CRUD kræver admin rettigheder
+                .requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+
+                // Kun for test 
+                .requestMatchers("/feide/test").authenticated()
+
+                //Bare superadmin kan ændre roller
+                .requestMatchers("/api/admin/**").hasAnyRole("SUPER_ADMIN")
+
+                // Resten er åbent for alle
+                .anyRequest().permitAll()  
             )
                 .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) //OAuth2 Login
            .redirectionEndpoint(redirection -> redirection
