@@ -54,7 +54,7 @@ public class EventReg2Controller {
     }
 
     // POST new item
-    @PostMapping ("/newEventReg")
+    @PostMapping
     public EventReg2 createTest(@RequestBody EventReg2 testAtt) {
         return repository.save(testAtt);
         }
