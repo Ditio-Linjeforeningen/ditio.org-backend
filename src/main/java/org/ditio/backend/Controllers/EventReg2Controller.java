@@ -2,8 +2,13 @@ package org.ditio.backend.Controllers;
 
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.EventReg2;
+
+import org.ditio.backend.Entities.Event;
+import org.ditio.backend.Entities.User;
+
 import org.ditio.backend.Enums.Attendance_Values;
 import org.ditio.backend.Repositories.EventReg2Repository;
+import org.ditio.backend.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +64,7 @@ public class EventReg2Controller {
         return repository.save(testAtt);
         }
 
+
     @PutMapping
     public EventReg2 editTestAtt(@PathVariable UUID id){
         return null;
@@ -93,35 +99,79 @@ public class EventReg2Controller {
 //OTP
     //Sjekker om inputkode er lik true og endrer oppmøtestatus fra false til true. 
     //https://spring.io/guides/tutorials/rest
-    @PutMapping("/verify2/{id}")
-    Optional<EventReg2> updateTestAtt(@RequestBody Map<String, Object>body, @PathVariable UUID id) {
-        
-        String input = String.valueOf(body.getOrDefault("code", "")).trim();
-        
-        //https://howtodoinjava.com/java/date-time/java-localdatetime-class/
-        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
-        LocalDateTime currentTime = LocalDateTime.now();*/
-        //If current-time is past getdeadline()
+
+    // En enkel DTO som matcher forventet body
+public record VerifyRequestDTO(String code) {}
 
 
-        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
-        if(valid == true /* && deadline*/ ){
-            System.out.print("Input og kode matcher");
+public int test(int a){
+return a;
+}
 
-            return repository.findById(id)
-            .map(testAtt-> {
-                testAtt.setAttStatus(Attendance_Values.attended);
-                return repository.save(testAtt);
-            });
-        }
-        else{
-            //System.out.print("Input og kode matcher IKKE");
-            return null;
-        }
-    }}
+@PutMapping("/Attended/{id}")
+public ResponseEntity<?> user_attendance_reg(@RequestBody VerifyRequestDTO body, @PathVariable("id") UUID id) {
+
+    String input = body.code().trim();
+    boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
+
+    Attendance_Values neededValue = Attendance_Values.confirmed;
+
+    if (!valid) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("message", "Feil kode"));
+    }
+
+
+    else{
+        return repository.findById(id)
+                .map(reg -> {
+
+                    if (reg.getAttStatus() != neededValue){
+                        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("message", "Du er ikke registrert til arrrangementet, og kan ikke melde oppmøte."));
+                    }
+
+                    else{
+                    reg.setAttStatus(Attendance_Values.attended); 
+                    var saved = repository.save(reg);
+                    return ResponseEntity.ok(Map.of(
+                            "user_id", saved.getUserId(),
+                            "event_id", saved.getEventId(),
+                            "att_status", saved.getAttStatus()
+                    ));
+                    }
+                    
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("message", "EventReg2 ikke funnet"))); 
+    }
+    }
+    }
 //PUT(KODE): curl -i --request PUT --json 
 // "{\"code\":\"1652\",\"att_status\":true}" 
 // "http://localhost:8080/testAtt/verify2/879f6b7a-c90f-49d7-b2a9-e6b3154af817"
 
 
 //curl --json "{\"event_id\": \"123\", \"userIdString\": "OlaNor123", \"att_status\": \"false\"}" http://localhost:8080/testAtt
+
+/*@PutMapping("/verify2/{id}")
+    Optional<EventReg2> updateTestAtt(@RequestBody Map<String, Object>body, @PathVariable("id") UUID id) {
+        
+        String input = String.valueOf(body.getOrDefault("code", "")).trim();
+
+        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
+        if(valid == true /* && deadline*/ /*){
+            System.out.print("Input og kode matcher");
+
+            return repository.findById(id)
+            .map(testAtt-> {
+                testAtt.setAttStatus(Attendance_Values.attended);
+                return repository.save(testAtt);
+                
+            });
+        }
+        else{
+            //System.out.print("Input og kode matcher IKKE");
+            return null;
+        }
+    }*/ 

@@ -28,6 +28,8 @@ public class EventReg2 {
     @Column(name = "att_status", nullable = false)
     private Attendance_Values attStatus;
 
+    
+
     // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
@@ -37,7 +39,7 @@ public class EventReg2 {
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
     private Event event;
 
-    protected EventReg2() {}
+    public EventReg2() {}
 
     // getters/setters
     public UUID getEventRegId() { return eventRegId; }
@@ -52,6 +54,6 @@ public class EventReg2 {
     public Attendance_Values getAttStatus() { return attStatus; }
     public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
 
-    public User getUser() { return user; }
-    public Event getEvent() { return event; }
+    /*public User getUser() { return user; }
+    public Event getEvent() { return event; }*/
 }
