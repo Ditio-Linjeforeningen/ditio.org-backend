@@ -1,42 +1,57 @@
 package org.ditio.backend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
 import java.util.UUID;
-
 import org.ditio.backend.Enums.Attendance_Values;
 
 @Entity
-    @Table(name = "event_reg2")
-    public class EventReg2 {
+@Table(name = "event_reg2")
+public class EventReg2 {
 
     @Id
     @GeneratedValue
-    private UUID event_reg_id;
+    @Column(name = "event_reg_id", columnDefinition = "uuid")
+    private UUID eventRegId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    // Skrivbare FK-kolonner som kommer fra JSON
+    @JsonProperty("user_id")
+    @Column(name = "user_id", nullable = false)
+    private String userId;
 
-    
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "event_id")
-    private Event event;
-
+    @JsonProperty("event_id")
+    @Column(name = "event_id", nullable = false, columnDefinition = "uuid")
+    private UUID eventId;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Attendance_Values att_status; 
+    @JsonProperty("att_status")
+    @Column(name = "att_status", nullable = false)
+    private Attendance_Values attStatus;
 
-    public EventReg2() {}
+    // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User user;
 
-    public EventReg2(UUID event_reg_id, /*String feideId,*/ Attendance_Values att_status) {
-        this.event_reg_id = event_reg_id;
-        //this.feideId = feideId;
-        this.att_status = att_status;  
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id", insertable = false, updatable = false)
+    private Event event;
 
-    public Attendance_Values getAttStatus(){return att_status;}
-    public void setAttStatus(Attendance_Values att_status){ this.att_status = att_status;}
+    protected EventReg2() {}
 
+    // getters/setters
+    public UUID getEventRegId() { return eventRegId; }
+    public void setEventRegId(UUID eventRegId) { this.eventRegId = eventRegId; }
+
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
+
+    public UUID getEventId() { return eventId; }
+    public void setEventId(UUID eventId) { this.eventId = eventId; }
+
+    public Attendance_Values getAttStatus() { return attStatus; }
+    public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
+
+    public User getUser() { return user; }
+    public Event getEvent() { return event; }
 }
