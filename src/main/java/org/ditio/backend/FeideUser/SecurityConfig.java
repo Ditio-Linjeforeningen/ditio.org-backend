@@ -24,14 +24,30 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/feide/test").authenticated() // må logge ind for at komme /feide/test
-                .anyRequest().permitAll()  // tilgængeligt for alle andre endpoints
+                //Alle kan se events
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/events/**").permitAll()
+                
+                // Event CRUD kræver admin rettigheder
+                .requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+
+                // Kun for test     
+                .requestMatchers("/feide/test").authenticated()
+
+                //Bare superadmin kan ændre roller
+                .requestMatchers("/api/admin/**").hasAnyRole("SUPER_ADMIN")
+
+                // Resten er åbent for alle
+                .anyRequest().permitAll()  
             )
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/feide/test", true) //OAuth2 Login
-           .redirectionEndpoint(redirection -> redirection
-                .baseUri("/login/callback") 
-            )
-            .defaultSuccessUrl("/feide/test", true)
+                .oauth2Login(oauth2 -> oauth2
+                //Synkroniserer med UserDB service
+                .userInfoEndpoint(userInfo -> userInfo.oidcUserService(userDB))
+                //henter token hos feide
+                .redirectionEndpoint(redirection -> redirection.baseUri("/login/callback"))
+                //Går på default til /api/users/meg efter login
+                //Front end burde kunne overstyre denne her, 
+                // hvis de vil sende brugeren tilbage hvor den kom fra efter indlogging
+                .defaultSuccessUrl("/api/users/meg", true)
         );
 
         return http.build();
