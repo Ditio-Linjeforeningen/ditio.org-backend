@@ -1,0 +1,2 @@
+ALTER TABLE event_reg2 
+ADD COLUMN start_time TIMESTAMP NOT NULL;

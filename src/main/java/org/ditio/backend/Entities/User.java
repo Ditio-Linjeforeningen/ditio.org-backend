@@ -22,6 +22,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    /*@Column (name ="quarantine_until")
+    private */
+
     //enum for rolle
     @Enumerated(EnumType.STRING)
     @Column(name = "role")

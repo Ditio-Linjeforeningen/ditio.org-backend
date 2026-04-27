@@ -2,6 +2,9 @@ package org.ditio.backend.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.UUID;
 import org.ditio.backend.Enums.Attendance_Values;
 
@@ -28,7 +31,9 @@ public class EventReg2 {
     @Column(name = "att_status", nullable = false)
     private Attendance_Values attStatus;
 
-    
+    @JsonProperty("deadline")
+    @Column(name = "deadline", nullable = false)
+    private LocalDateTime deadline;
 
     // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,7 +42,10 @@ public class EventReg2 {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
+    @JoinColumn(name = "start_time", insertable = false, updatable = false)
     private Event event;
+
+    
 
     public EventReg2() {}
 
@@ -54,6 +62,12 @@ public class EventReg2 {
     public Attendance_Values getAttStatus() { return attStatus; }
     public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
 
+    
+    public LocalDateTime getDeadline() {return deadline;}
+    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}
+        
+
     /*public User getUser() { return user; }
     public Event getEvent() { return event; }*/
+
 }
