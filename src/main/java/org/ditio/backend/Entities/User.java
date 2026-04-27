@@ -43,7 +43,6 @@ public class User {
     public void setEmail(String email) {  this.email = email; }
 
     public String getFeideId() {  return feideId; }
-    public void setFeideId(String feideId) { this.feideId = feideId; }
 
     public String getNavn() { return navn; }
     public void setNavn(String navn) {  this.navn = navn; }
