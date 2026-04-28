@@ -35,6 +35,7 @@ public class EventReg2 {
     @Column(name = "deadline", nullable = false)
     private LocalDateTime deadline;
 
+
     // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
@@ -42,8 +43,10 @@ public class EventReg2 {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
-    @JoinColumn(name = "start_time", insertable = false, updatable = false)
+   // @JoinColumn(name = "start_time", insertable = false, updatable = false)
     private Event event;
+
+    
 
     
 
@@ -63,7 +66,7 @@ public class EventReg2 {
     public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
 
     
-    public LocalDateTime getDeadline() {return deadline;}
+    public LocalDateTime getDeadline() {return event.getStartTime().toLocalDate().atTime(23,59,59);}
     public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}
         
 

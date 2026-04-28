@@ -138,7 +138,8 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody VerifyRequestDTO body,
                     return ResponseEntity.ok(Map.of(
                             "user_id", saved.getUserId(),
                             "event_id", saved.getEventId(),
-                            "att_status", saved.getAttStatus()
+                            "att_status", saved.getAttStatus(),
+                            "deadline", saved.getDeadline()
                     ));
                     }
                     
