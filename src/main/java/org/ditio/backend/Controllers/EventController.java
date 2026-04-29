@@ -42,7 +42,7 @@ public class EventController {
     }
 
     //POST new event
-    @PostMapping
+    @PostMapping("/newEvent")
     //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public Event createEvent(@RequestBody Event event) {
         return eventRepository.save(event);

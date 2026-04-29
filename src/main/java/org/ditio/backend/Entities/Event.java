@@ -20,7 +20,7 @@ public class Event {
     @Column(length = 2000)
     private String description;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;

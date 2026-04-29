@@ -31,9 +31,9 @@ public class EventReg2 {
     @Column(name = "att_status", nullable = false)
     private Attendance_Values attStatus;
 
-    @JsonProperty("deadline")
+    /*@JsonProperty("deadline")
     @Column(name = "deadline", nullable = false)
-    private LocalDateTime deadline;
+    private LocalDateTime deadline;*/
 
 
     // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
@@ -66,8 +66,8 @@ public class EventReg2 {
     public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
 
     
-    public LocalDateTime getDeadline() {return event.getStartTime().toLocalDate().atTime(23,59,59);}
-    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}
+    /*public LocalDateTime getDeadline() {return deadline;}
+    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}*/
         
 
     /*public User getUser() { return user; }
