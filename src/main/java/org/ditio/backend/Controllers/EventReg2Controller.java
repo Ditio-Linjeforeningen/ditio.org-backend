@@ -1,5 +1,6 @@
 package org.ditio.backend.Controllers;
 
+import org.ditio.backend.EventReg2Service;
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.EventReg2;
 
@@ -9,6 +10,7 @@ import org.ditio.backend.Entities.User;
 import org.ditio.backend.Enums.Attendance_Values;
 import org.ditio.backend.Repositories.EventReg2Repository;
 import org.ditio.backend.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,8 @@ import java.util.UUID;
 @RequestMapping("/EventReg2")
 
 public class EventReg2Controller {
+    @Autowired
+    private EventReg2Service eventReg2Service;      // den lille servicen som kun setter deadline
 
     private final EventReg2Repository repository;
      private static final int STEP_SECONDS = 30;
@@ -58,10 +62,11 @@ public class EventReg2Controller {
                 .orElseThrow(() -> new RuntimeException("EventReg2 not found"));
     }
 
-    // POST new item
+    // POST new eventreg2
     @PostMapping
     public EventReg2 createEventReg2(@RequestBody EventReg2 eventReg2) {
-        
+        // Sett deadline basert på eventId
+        eventReg2Service.applyDeadline(eventReg2);
         return repository.save(eventReg2);
         }
 

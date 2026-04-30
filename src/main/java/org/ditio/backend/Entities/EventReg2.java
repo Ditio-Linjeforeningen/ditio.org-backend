@@ -43,12 +43,7 @@ public class EventReg2 {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
-   // @JoinColumn(name = "start_time", insertable = false, updatable = false)
     private Event event;
-
-    
-
-    
 
     public EventReg2() {}
 
@@ -64,16 +59,9 @@ public class EventReg2 {
 
     public Attendance_Values getAttStatus() { return attStatus; }
     public void setAttStatus(Attendance_Values attStatus) { this.attStatus = attStatus; }
-
-    
     
     public LocalDateTime getDeadline() {return deadline;}
     public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}
-    
-    //Not working because of null in eventReg2 but can't delete EventReg2 id right now
-    /*LocalDateTime startTime = event.getStartTime();
-    public LocalDateTime getDeadline() {return deadline;}
-    public void setDeadline(LocalDateTime deadline) { this.deadline = startTime.toLocalDate().atTime(23,59,59);}*/
 
     /*public User getUser() { return user; }
     public Event getEvent() { return event; }*/
