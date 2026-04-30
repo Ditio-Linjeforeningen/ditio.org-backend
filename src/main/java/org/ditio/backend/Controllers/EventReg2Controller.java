@@ -53,21 +53,21 @@ public class EventReg2Controller {
 
     // GET single item by id
     @GetMapping("/{id}")
-    public EventReg2 getTestAtts(@PathVariable UUID id) {
+    public EventReg2 getEventReg2(@PathVariable UUID id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("TestAtt not found"));
+                .orElseThrow(() -> new RuntimeException("EventReg2 not found"));
     }
 
     // POST new item
     @PostMapping
-    public EventReg2 createTest(@RequestBody EventReg2 testAtt) {
+    public EventReg2 createEventReg2(@RequestBody EventReg2 eventReg2) {
         
-        return repository.save(testAtt);
+        return repository.save(eventReg2);
         }
 
 
     @PutMapping
-    public EventReg2 editTestAtt(@PathVariable UUID id){
+    public EventReg2 editEventReg2(@PathVariable UUID id){
         return null;
         
     }
@@ -89,14 +89,15 @@ public class EventReg2Controller {
 //https://stackoverflow.com/questions/14470111/spring-redirectattributes-addattribute-vs-addflashattribute
 
   @DeleteMapping("/{id}")
-        public ResponseEntity<EventReg2>deleteItem(@PathVariable UUID id){
-           EventReg2 testAtt = repository.findById(id)
-             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
-           repository.delete(testAtt);
-           return ResponseEntity.ok(testAtt);
+        public ResponseEntity<EventReg2>deleteEventReg2(@PathVariable UUID id){
+           EventReg2 eventReg2 = repository.findById(id)
+             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "EventReg2 not found"));
+           repository.delete(eventReg2);
+           return ResponseEntity.ok(eventReg2);
         
         }
 
+        
 //OTP
     //Sjekker om inputkode er lik true og endrer oppmøtestatus fra false til true. 
     //https://spring.io/guides/tutorials/rest
