@@ -183,6 +183,14 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
                         .body(Map.of("message", "EventReg2 ikke funnet"))); 
                     }
                 }
+
+@PostMapping("/Create_Quarantine")
+    public EventReg2 createQuarantine(@RequestBody EventReg2 eventReg2) {
+        // Sett deadline basert på eventId
+        eventReg2Service.add_quarantine_until(eventReg2);
+        return repository.save(eventReg2);
+        }
+
             }
 //PUT(KODE): curl -i --request PUT --json 
 // "{\"code\":\"1652\",\"att_status\":true}" 

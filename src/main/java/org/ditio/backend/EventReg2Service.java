@@ -36,4 +36,22 @@ public class EventReg2Service {
         reg.setDeadline(deadline);
     }
     
+public void add_quarantine_until(EventReg2 reg) {
+     UUID eventId = reg.getEventId();
+        if (eventId == null) {
+            throw new IllegalArgumentException("event_id må settes på EventReg2 før deadline kan beregnes");
+        }
+
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new EntityNotFoundException("Event ikke funnet: " + eventId));
+
+        if (event.getStartTime() == null) {
+            throw new IllegalStateException("Event.startTime er null for event: " + eventId);
+        }
+
+        LocalDateTime quarantine_until = event.getStartTime().plusDays(30);
+        reg.setDeadline(quarantine_until);
+    
+    
+}
 }

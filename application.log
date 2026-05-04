@@ -65,3 +65,8 @@
 2026-05-04T11:32:06.337+02:00 DEBUG 14996 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
 2026-05-04T11:32:27.140+02:00 DEBUG 14996 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.user_id from event_reg2 er1_0
 2026-05-04T11:33:09.813+02:00 DEBUG 14996 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-04T12:13:48.164+02:00  INFO 14996 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-04T12:13:48.290+02:00  INFO 14996 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-04T12:13:48.427+02:00  INFO 14996 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-04T12:13:48.524+02:00  INFO 14996 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-04T12:13:48.560+02:00  INFO 14996 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

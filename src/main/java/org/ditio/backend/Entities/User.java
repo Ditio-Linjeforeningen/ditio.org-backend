@@ -1,12 +1,17 @@
 package org.ditio.backend.Entities;
 
+import java.time.LocalDateTime;
+
 import org.ditio.backend.Enums.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,9 +27,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    /*@Column (name ="quarantine_until")
-    private */
-
+    @Column(name = "quarantine_until")
+    private LocalDateTime quarantine_until;
+    
     //enum for rolle
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -32,12 +37,17 @@ public class User {
 
     public User() {}
 
-    public User(String feideId, String navn, String email, UserRole role) {
+    public User(String feideId, String navn, String email, UserRole role, LocalDateTime quarantine_until ) {
         this.feideId = feideId;
         this.navn = navn;
         this.email = email;
         this.role = role;
+        this.quarantine_until = quarantine_until;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_reg_id", insertable = false, updatable = false)
+    private EventReg2 eventreg2;
    
 
     //Getters og Setters
@@ -51,5 +61,10 @@ public class User {
 
     public UserRole getRole() { return role; }
     public void setRole(UserRole role) { this.role = role; }
+
+    public LocalDateTime getQurantine_until() {return quarantine_until;}
+    public void setQuarantine_until(LocalDateTime quarantine_until) 
+    {this.quarantine_until = quarantine_until;}
+
 
 }
