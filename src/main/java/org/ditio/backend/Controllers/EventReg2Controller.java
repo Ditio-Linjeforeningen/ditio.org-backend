@@ -14,10 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 
+import java.sql.Time;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -66,13 +71,14 @@ public class EventReg2Controller {
 
     // POST new eventreg2
     @PostMapping
+    //NEED TO BLOCK OUT PEOPLE IN QUARANTINE 
     public EventReg2 createEventReg2(@RequestBody EventReg2 eventReg2) {
-        // Sett deadline basert på eventId
+        
         eventReg2Service.applyDeadline(eventReg2);
         eventReg2Service.add_quarantine_until(eventReg2);
         return repository.save(eventReg2);
-        }
-
+        
+    }
 
     @PutMapping
     public EventReg2 editEventReg2(@PathVariable UUID id){
@@ -159,8 +165,6 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(Map.of("message", "Feil kode"));
     }
-
-    
 
     else{
         return repository.findById(id)

@@ -1,5 +1,6 @@
 package org.ditio.backend.Repositories;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.ditio.backend.Entities.EventReg2;
@@ -12,4 +13,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     //Optional metode for at finde bruge via epost
     Optional<User> findByEmail(String email);
     public Object getUserByEmail(String email);
+   
 }
