@@ -108,26 +108,51 @@ public class EventReg2Controller {
     //https://spring.io/guides/tutorials/rest
 
     // En enkel DTO som matcher forventet body
-public record VerifyRequestDTO(String code) {}
+public record Verify_Attendance_Code_DTO(String code) {}
 
 
-public int test(int a){
-return a;
-}
+@PutMapping("/Q/{id}")
+public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
+    return repository.findById(id)
+        .map(reg -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            if (now.isAfter(reg.getDeadline())
+                && (reg.getAttStatus() != Attendance_Values.attended
+                    && reg.getAttStatus() != Attendance_Values.waitlist)) {
+                        
+                        reg.setAttStatus(Attendance_Values.no_show);
+                        var saved = repository.save(reg);
+                        return ResponseEntity.ok(Map.of(
+                         "user_id", saved.getUserId(),
+                         "event_id", saved.getEventId(),
+                         "att_status", saved.getAttStatus(),
+                         "deadline", saved.getDeadline()
+                        ));
+                    } else {
+                // Fristen er ikke passert – ingen endring
+                return null;
+            }
+        })
+        .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(Map.of("message", "EventReg2 ikke funnet")));
+    }
+
 
 @PutMapping("/Attended/{id}")
-public ResponseEntity<?> user_attendance_reg(@RequestBody VerifyRequestDTO body, @PathVariable("id") UUID id) {
+public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code_DTO body, @PathVariable("id") UUID id) {
 
     String input = body.code().trim();
     boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
 
     Attendance_Values neededValue = Attendance_Values.confirmed;
+    LocalDateTime TimeNow = LocalDateTime.now();
+
 
     if (!valid) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(Map.of("message", "Feil kode"));
     }
-
 
     else{
         return repository.findById(id)
@@ -138,23 +163,27 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody VerifyRequestDTO body,
                         .body(Map.of("message", "Du er ikke registrert til arrrangementet, og kan ikke melde oppmøte."));
                     }
 
+                    if (TimeNow.isAfter(reg.getDeadline())){
+                         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("message", "Du møtte ikke opp på arrangementet, og kan ikke melde oppmøte."));
+                    }
+
                     else{
-                    reg.setAttStatus(Attendance_Values.attended); 
-                    var saved = repository.save(reg);
-                    return ResponseEntity.ok(Map.of(
+                        reg.setAttStatus(Attendance_Values.attended); 
+                        var saved = repository.save(reg);
+                        return ResponseEntity.ok(Map.of(
                             "user_id", saved.getUserId(),
                             "event_id", saved.getEventId(),
                             "att_status", saved.getAttStatus(),
                             "deadline", saved.getDeadline()
-                    ));
-                    }
-                    
-                })
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                         ));
+                        }
+                    })
+                    .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(Map.of("message", "EventReg2 ikke funnet"))); 
-    }
-    }
-    }
+                    }
+                }
+            }
 //PUT(KODE): curl -i --request PUT --json 
 // "{\"code\":\"1652\",\"att_status\":true}" 
 // "http://localhost:8080/testAtt/verify2/879f6b7a-c90f-49d7-b2a9-e6b3154af817"
