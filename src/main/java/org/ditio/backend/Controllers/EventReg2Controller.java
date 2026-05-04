@@ -40,6 +40,8 @@ public class EventReg2Controller {
     private final String secretBase32;
     private final Clock clock = Clock.systemUTC();
 
+    private UserRepository userRepository;
+
     public EventReg2Controller(EventReg2Repository repository, 
         @Value("${otp.secret:OTP_CONFIG}") String secretConfig,
         @Value("${otp.secret.isBase32:OTP_CONFIG_STATUS}") boolean isBase32) {
@@ -67,6 +69,7 @@ public class EventReg2Controller {
     public EventReg2 createEventReg2(@RequestBody EventReg2 eventReg2) {
         // Sett deadline basert på eventId
         eventReg2Service.applyDeadline(eventReg2);
+        eventReg2Service.add_quarantine_until(eventReg2);
         return repository.save(eventReg2);
         }
 
@@ -122,12 +125,14 @@ public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
                     && reg.getAttStatus() != Attendance_Values.waitlist)) {
                         
                         reg.setAttStatus(Attendance_Values.no_show);
+                        reg.setQuarantine_end(reg.getDeadline().plusDays(30));
                         var saved = repository.save(reg);
                         return ResponseEntity.ok(Map.of(
                          "user_id", saved.getUserId(),
                          "event_id", saved.getEventId(),
                          "att_status", saved.getAttStatus(),
-                         "deadline", saved.getDeadline()
+                         "deadline", saved.getDeadline(),
+                         "quarantine_until", saved.getQuarantine_end()
                         ));
                     } else {
                 // Fristen er ikke passert – ingen endring
@@ -137,6 +142,7 @@ public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
         .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(Map.of("message", "EventReg2 ikke funnet")));
     }
+    
 
 
 @PutMapping("/Attended/{id}")
@@ -154,6 +160,8 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
                 .body(Map.of("message", "Feil kode"));
     }
 
+    
+
     else{
         return repository.findById(id)
                 .map(reg -> {
@@ -168,14 +176,17 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
                         .body(Map.of("message", "Du møtte ikke opp på arrangementet, og kan ikke melde oppmøte."));
                     }
 
+
                     else{
                         reg.setAttStatus(Attendance_Values.attended); 
+                        reg.setQuarantine_end(null);
                         var saved = repository.save(reg);
                         return ResponseEntity.ok(Map.of(
                             "user_id", saved.getUserId(),
                             "event_id", saved.getEventId(),
                             "att_status", saved.getAttStatus(),
-                            "deadline", saved.getDeadline()
+                            "deadline", saved.getDeadline(),
+                            "quarantine_end", saved.getQuarantine_end()
                          ));
                         }
                     })
@@ -184,12 +195,12 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
                     }
                 }
 
-@PostMapping("/Create_Quarantine")
+/*@PostMapping("/Create_Quarantine")
     public EventReg2 createQuarantine(@RequestBody EventReg2 eventReg2) {
         // Sett deadline basert på eventId
         eventReg2Service.add_quarantine_until(eventReg2);
         return repository.save(eventReg2);
-        }
+        }*/
 
             }
 //PUT(KODE): curl -i --request PUT --json 

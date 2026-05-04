@@ -35,6 +35,10 @@ public class EventReg2 {
     @Column(name = "deadline", nullable = false)
     private LocalDateTime deadline;
 
+    @JsonProperty("quarantine_end")
+    @Column(name = "quarantine_end", nullable = true)
+    private LocalDateTime quarantine_end;
+
 
     // Read-only relasjoner (lastes ved behov, men brukes ikke til å skrive kolonnene)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,6 +66,10 @@ public class EventReg2 {
     
     public LocalDateTime getDeadline() {return deadline;}
     public void setDeadline(LocalDateTime deadline) { this.deadline = deadline;}
+
+    public LocalDateTime getQuarantine_end(){return quarantine_end;}
+    public void setQuarantine_end(LocalDateTime quarantine_end) 
+    {this.quarantine_end = quarantine_end;}
 
     /*public User getUser() { return user; }
     public Event getEvent() { return event; }*/

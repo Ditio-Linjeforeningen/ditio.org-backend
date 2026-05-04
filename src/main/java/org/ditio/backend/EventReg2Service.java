@@ -49,8 +49,8 @@ public void add_quarantine_until(EventReg2 reg) {
             throw new IllegalStateException("Event.startTime er null for event: " + eventId);
         }
 
-        LocalDateTime quarantine_until = event.getStartTime().plusDays(30);
-        reg.setDeadline(quarantine_until);
+        LocalDateTime quarantine_end_set_to_null = null;
+        reg.setQuarantine_end(quarantine_end_set_to_null);
     
     
 }
