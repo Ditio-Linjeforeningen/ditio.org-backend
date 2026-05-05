@@ -35,6 +35,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/EventReg2")
 
+
 public class EventReg2Controller {
     @Autowired
     private EventReg2Service eventReg2Service;      // den lille servicen som kun setter deadline
@@ -54,6 +55,17 @@ public class EventReg2Controller {
          this.secretBase32 = isBase32
                 ? secretConfig
                 : TimeBasedOnetimePassword.encodeBase32(secretConfig);
+    }
+
+    @GetMapping("/current")
+    public Map<String, Object> current() {
+        long now = Instant.now(clock).getEpochSecond();
+        String code = TimeBasedOnetimePassword.generateTOTP(secretBase32);
+
+        long remaining = STEP_SECONDS - (now % STEP_SECONDS);
+        Instant expiresAt = Instant.ofEpochSecond(now + remaining);
+
+        return Map.of("code", code, "expiresAt", expiresAt.toString());
     }
 
     // GET all items

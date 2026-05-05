@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+/*package org.ditio.backend.Controllers;
 
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,4 +46,4 @@ public class DevOtpController {
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
         return ResponseEntity.ok(Map.of("valid", valid));
     }
-}
+}*/
