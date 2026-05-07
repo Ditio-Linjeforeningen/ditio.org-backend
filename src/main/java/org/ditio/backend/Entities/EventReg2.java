@@ -15,7 +15,7 @@ public class EventReg2 {
     @Id
     @GeneratedValue
     @Column(name = "event_reg_id", columnDefinition = "uuid")
-    private UUID eventRegId;
+    private UUID event_reg_id;
 
     // Skrivbare FK-kolonner som kommer fra JSON
     @JsonProperty("user_id")
@@ -52,8 +52,8 @@ public class EventReg2 {
     public EventReg2() {}
 
     // getters/setters
-    public UUID getEventRegId() { return eventRegId; }
-    public void setEventRegId(UUID eventRegId) { this.eventRegId = eventRegId; }
+    public UUID getEventRegId() { return event_reg_id; }
+    public void setEventRegId(UUID event_reg_id) { this.event_reg_id = event_reg_id; }
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }

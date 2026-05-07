@@ -45,9 +45,9 @@ public class User {
         this.quarantine_until = quarantine_until;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+   /* @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_reg_id", insertable = false, updatable = false)
-    private EventReg2 eventreg2;
+    private EventReg2 eventreg2;*/
    
 
     //Getters og Setters
@@ -62,9 +62,8 @@ public class User {
     public UserRole getRole() { return role; }
     public void setRole(UserRole role) { this.role = role; }
 
-    public LocalDateTime getQurantine_until() {return quarantine_until;}
+    public LocalDateTime getQuarantine_until() {return quarantine_until;}
     public void setQuarantine_until(LocalDateTime quarantine_until) 
     {this.quarantine_until = quarantine_until;}
-
 
 }

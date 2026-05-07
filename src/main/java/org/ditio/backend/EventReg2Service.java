@@ -2,23 +2,26 @@ package org.ditio.backend;
 
 import org.ditio.backend.Entities.Event;
 import org.ditio.backend.Entities.EventReg2;
+import org.ditio.backend.Enums.Attendance_Values;
+import org.ditio.backend.Repositories.EventReg2Repository;
 import org.ditio.backend.Repositories.EventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
 public class EventReg2Service {
 
-    private final EventRepository eventRepository;
+   @Autowired
+   //private static EventReg2Repository eventReg2Repository; 
+   private EventRepository eventRepository;
 
-    public EventReg2Service(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
-    }
-
-    // Kall denne før du lagrer EventReg2
+       // Kall denne før du lagrer EventReg2
     public void applyDeadline(EventReg2 reg) {
         UUID eventId = reg.getEventId();
         if (eventId == null) {
@@ -54,4 +57,15 @@ public void add_quarantine_until(EventReg2 reg) {
     
     
 }
+ 
+    /*public static EventReg2 saveEventReg2(EventReg2 reg) {
+       
+        return eventReg2Repository.save(reg);
+    }*/
+
+    
 }
+
+
+
+

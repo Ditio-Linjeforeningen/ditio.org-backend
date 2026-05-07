@@ -33,10 +33,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/EventReg2")
+@RequestMapping("/EventReg3")
 
 
-public class EventReg2Controller {
+public class EventReg3Controller {
     @Autowired
     private EventReg2Service eventReg2Service;    // den lille servicen som kun setter deadline
 
@@ -48,7 +48,7 @@ public class EventReg2Controller {
     private final Clock clock = Clock.systemUTC();
 
 
-    public EventReg2Controller(EventReg2Repository repository, 
+    public EventReg3Controller(EventReg2Repository repository, 
         EventReg2Service eventReg2Service,
         @Value("${otp.secret:OTP_CONFIG}") String secretConfig,
         @Value("${otp.secret.isBase32:OTP_CONFIG_STATUS}") boolean isBase32) {
@@ -218,40 +218,4 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
                         .body(Map.of("message", "EventReg2 ikke funnet"))); 
                     }
                 }
-
-/*@PostMapping("/Create_Quarantine")
-    public EventReg2 createQuarantine(@RequestBody EventReg2 eventReg2) {
-        // Sett deadline basert på eventId
-        eventReg2Service.add_quarantine_until(eventReg2);
-        return repository.save(eventReg2);
-        }*/
-
-            }
-//PUT(KODE): curl -i --request PUT --json 
-// "{\"code\":\"1652\",\"att_status\":true}" 
-// "http://localhost:8080/testAtt/verify2/879f6b7a-c90f-49d7-b2a9-e6b3154af817"
-
-
-//curl --json "{\"event_id\": \"123\", \"userIdString\": "OlaNor123", \"att_status\": \"false\"}" http://localhost:8080/testAtt
-
-/*@PutMapping("/verify2/{id}")
-    Optional<EventReg2> updateTestAtt(@RequestBody Map<String, Object>body, @PathVariable("id") UUID id) {
-        
-        String input = String.valueOf(body.getOrDefault("code", "")).trim();
-
-        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
-        if(valid == true /* && deadline*/ /*){
-            System.out.print("Input og kode matcher");
-
-            return repository.findById(id)
-            .map(testAtt-> {
-                testAtt.setAttStatus(Attendance_Values.attended);
-                return repository.save(testAtt);
-                
-            });
-        }
-        else{
-            //System.out.print("Input og kode matcher IKKE");
-            return null;
-        }
-    }*/ 
+                }
