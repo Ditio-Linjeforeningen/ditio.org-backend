@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+/*package org.ditio.backend.Controllers;
 
 import org.ditio.backend.EventReg2Service;
 import org.ditio.backend.TimeBasedOnetimePassword;
@@ -99,7 +99,7 @@ public class EventReg2Controller {
         return EventReg2Service.saveEventReg2(eventReg2);
         
     }*/
-
+/* 
     @PutMapping
     public EventReg2 editEventReg2(@PathVariable UUID id){
         return null;
@@ -226,7 +226,7 @@ public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code
         return repository.save(eventReg2);
         }*/
 
-            }
+ //           }
 //PUT(KODE): curl -i --request PUT --json 
 // "{\"code\":\"1652\",\"att_status\":true}" 
 // "http://localhost:8080/testAtt/verify2/879f6b7a-c90f-49d7-b2a9-e6b3154af817"

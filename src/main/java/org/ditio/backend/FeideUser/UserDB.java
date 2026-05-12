@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ditio.backend.EventReg2Service;
-import org.ditio.backend.Controllers.EventReg2Controller;
+import org.ditio.backend.EventReg3Service;
 import org.ditio.backend.Entities.EventReg2;
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Enums.UserRole;
@@ -23,11 +23,11 @@ import org.springframework.stereotype.Service;
 public class UserDB extends OidcUserService {
 
     private final UserRepository userRepository;
-    private EventReg2Service eventReg2Service;
+    private EventReg3Service eventReg3Service;
 
-    public UserDB(UserRepository userRepository, EventReg2Service eventReg2Service) {
+    public UserDB(UserRepository userRepository, EventReg3Service eventReg3Service) {
         this.userRepository = userRepository;
-        this.eventReg2Service = eventReg2Service;
+        this.eventReg3Service = eventReg3Service;
     }
 
     @Override   

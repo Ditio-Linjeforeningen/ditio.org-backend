@@ -28,6 +28,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -75,9 +76,17 @@ public class EventReg3Controller {
 
     // DTO for OTP input (som i din original)
     public record Verify_Attendance_Code_DTO(String code) {}
+    public record AttendanceResponse
+    (
+        UUID user_id,
+        UUID event_id,
+        Attendance_Values att_status,
+        LocalDateTime deadline,
+        LocalDateTime quarantine_end
+    ) {}
 
     // Merk no_show hvis vilkår er oppfylt
-    @PutMapping("/Q/{id}")
+    @PutMapping("/Activate_Quarantine_enddate/{id}")
     public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
         var saved = service.markNoShow(id);
         // Hvis ingenting ble endret, kan du velge å returnere 204/200 med nåværende status
@@ -95,14 +104,24 @@ public class EventReg3Controller {
     public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code_DTO body,
                                                  @PathVariable("id") UUID id) {
         
-        
         var saved = service.confirmAttendance(id, body.code());
-        return ResponseEntity.ok(Map.of(
-                "user_id", saved.getUserId(),
-                "event_id", saved.getEventId(),
-                "att_status", saved.getAttStatus(),
-                "deadline", saved.getDeadline(),
-                "quarantine_end", saved.getQuarantine_end()
-        ));
+        System.out.println("BODY CODE" + body.code());
+        System.out.print("SAVED:" + "user_id" + saved.getUserId());
+        System.out.print("event_id AA" + saved.getEventId());
+        System.out.print("event_id" + saved.getEventId());
+        System.out.print("att_status" + saved.getAttStatus());
+        System.out.print("deadline" + saved.getDeadline());
+        System.out.print("quarantine_end" + saved.getQuarantine_end());   
+                
+                
+          Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("user_id", saved.getUserId());
+            payload.put("event_id", saved.getEventId());
+            payload.put("att_status", saved.getAttStatus());
+            payload.put("deadline", saved.getDeadline());           // kan være null
+            payload.put("quarantine_end", saved.getQuarantine_end()); // er null ved attended
+
+            return ResponseEntity.ok(payload);
+        
     }
 }

@@ -185,25 +185,28 @@ public class EventReg3Service {
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, otpInput);
 
         if (!valid) {
-            throw new ResponseStatusException(UNAUTHORIZED, "Feil kode");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Feil kode");
         }
 
         var reg = findById(id);
         LocalDateTime now = LocalDateTime.now(clock);
 
         if (reg.getAttStatus() != Attendance_Values.confirmed) {
-            throw new ResponseStatusException(UNAUTHORIZED,
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
                     "Du er ikke registrert til arrangementet, og kan ikke melde oppmøte.");
         }
 
         if (reg.getDeadline() != null && now.isAfter(reg.getDeadline())) {
-            throw new ResponseStatusException(UNAUTHORIZED,
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
                     "Du møtte ikke opp på arrangementet, og kan ikke melde oppmøte.");
         }
 
-        reg.setAttStatus(Attendance_Values.attended);
-        reg.setQuarantine_end(null);
-        return repository.save(reg);
+        else{
+            reg.setAttStatus(Attendance_Values.attended);
+            reg.setQuarantine_end(null);
+            return repository.save(reg);
+        }
+        
     }
 
 
