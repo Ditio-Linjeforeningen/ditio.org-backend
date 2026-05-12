@@ -138,7 +138,7 @@ public class EventReg3Service {
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 
-        List<EventReg2> overdueList = repository.See_All_Not_Attended_Event(now, Attendance_Values.no_show);
+        List<EventReg2> overdueList = repository.findByDeadlineBeforeAndAttStatusNot(now, Attendance_Values.no_show);
 
         if (overdueList.isEmpty()) {
             return; // Ingen ting å gjøre

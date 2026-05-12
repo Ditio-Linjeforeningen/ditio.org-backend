@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EventReg2Repository extends JpaRepository<EventReg2, UUID> {
- List<EventReg2> See_All_Not_Attended_Event(LocalDateTime now, Attendance_Values status);
+    //Navnet må inntil videre være sånn pga navneregler i repo. Prøvde å fikse, men fikk ikke kjørt programmet. 
+ List<EventReg2> findByDeadlineBeforeAndAttStatusNot(LocalDateTime now, Attendance_Values status);
 
 }
