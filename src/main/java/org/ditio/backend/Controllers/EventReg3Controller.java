@@ -105,22 +105,13 @@ public class EventReg3Controller {
                                                  @PathVariable("id") UUID id) {
         
         var saved = service.confirmAttendance(id, body.code());
-        System.out.println("BODY CODE" + body.code());
-        System.out.print("SAVED:" + "user_id" + saved.getUserId());
-        System.out.print("event_id AA" + saved.getEventId());
-        System.out.print("event_id" + saved.getEventId());
-        System.out.print("att_status" + saved.getAttStatus());
-        System.out.print("deadline" + saved.getDeadline());
-        System.out.print("quarantine_end" + saved.getQuarantine_end());   
-                
-                
+        
           Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("user_id", saved.getUserId());
             payload.put("event_id", saved.getEventId());
             payload.put("att_status", saved.getAttStatus());
             payload.put("deadline", saved.getDeadline());           // kan være null
             payload.put("quarantine_end", saved.getQuarantine_end()); // er null ved attended
-
             return ResponseEntity.ok(payload);
         
     }

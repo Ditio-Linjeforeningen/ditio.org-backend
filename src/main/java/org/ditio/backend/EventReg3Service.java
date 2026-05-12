@@ -192,12 +192,12 @@ public class EventReg3Service {
         LocalDateTime now = LocalDateTime.now(clock);
 
         if (reg.getAttStatus() != Attendance_Values.confirmed) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
                     "Du er ikke registrert til arrangementet, og kan ikke melde oppmøte.");
         }
 
         if (reg.getDeadline() != null && now.isAfter(reg.getDeadline())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,
                     "Du møtte ikke opp på arrangementet, og kan ikke melde oppmøte.");
         }
 
