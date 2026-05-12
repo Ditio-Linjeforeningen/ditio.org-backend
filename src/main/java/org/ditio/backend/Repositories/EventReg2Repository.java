@@ -9,6 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EventReg2Repository extends JpaRepository<EventReg2, UUID> {
- List<EventReg2> find_All_Not_Attended_Event(LocalDateTime now, Attendance_Values status);
+ List<EventReg2> See_All_Not_Attended_Event(LocalDateTime now, Attendance_Values status);
 
 }

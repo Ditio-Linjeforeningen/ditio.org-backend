@@ -92,12 +92,10 @@ public class EventReg3Controller {
         ));
     }
 
-    // Bekreft oppmøte med OTP: One time password
+    // Bekreft oppmøte med OTP
     @PutMapping("/Attended/{id}")
-    public ResponseEntity<?> attendance_registration_with_otp(
-        @RequestBody Verify_Attendance_Code_DTO body, 
-        @PathVariable("id") UUID id
-    ) {
+    public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code_DTO body,
+                                                 @PathVariable("id") UUID id) {
         
         var saved = service.confirmAttendance(id, body.code());
           Map<String, Object> payload = new LinkedHashMap<>();

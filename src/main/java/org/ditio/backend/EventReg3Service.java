@@ -134,11 +134,11 @@ public class EventReg3Service {
     // "0 0 0 * * *" betyr hver eneste dag kl. 00:00:00
     //Hvis du vil teste det raskt uten å vente til midnatt, 
     // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
-   @Scheduled(cron = "0 0 0 * * *" )
+   @Scheduled(cron = "0 */2 * * * *" )
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 
-        List<EventReg2> overdueList = repository.find_All_Not_Attended_Event(now, Attendance_Values.no_show);
+        List<EventReg2> overdueList = repository.See_All_Not_Attended_Event(now, Attendance_Values.no_show);
 
         if (overdueList.isEmpty()) {
             return; // Ingen ting å gjøre
