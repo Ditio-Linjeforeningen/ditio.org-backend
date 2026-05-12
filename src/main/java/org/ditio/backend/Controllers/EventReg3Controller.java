@@ -76,17 +76,9 @@ public class EventReg3Controller {
 
     // DTO for OTP input (som i din original)
     public record Verify_Attendance_Code_DTO(String code) {}
-    public record AttendanceResponse
-    (
-        UUID user_id,
-        UUID event_id,
-        Attendance_Values att_status,
-        LocalDateTime deadline,
-        LocalDateTime quarantine_end
-    ) {}
-
+    
     // Merk no_show hvis vilkår er oppfylt
-    @PutMapping("/Activate_Quarantine_enddate/{id}")
+    /*@PutMapping("/Activate_Quarantine_enddate/{id}")
     public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
         var saved = service.markNoShow(id);
         // Hvis ingenting ble endret, kan du velge å returnere 204/200 med nåværende status
@@ -97,7 +89,7 @@ public class EventReg3Controller {
                 "deadline", saved.getDeadline(),
                 "quarantine_until", saved.getQuarantine_end()
         ));
-    }
+    }*/
 
     // Bekreft oppmøte med OTP
     @PutMapping("/Attended/{id}")
@@ -105,7 +97,7 @@ public class EventReg3Controller {
                                                  @PathVariable("id") UUID id) {
         
         var saved = service.confirmAttendance(id, body.code());
-        
+
           Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("user_id", saved.getUserId());
             payload.put("event_id", saved.getEventId());

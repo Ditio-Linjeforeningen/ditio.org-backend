@@ -11,6 +11,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -131,6 +132,7 @@ public class EventReg3Service {
 
     // Merk som no_show hvis fristen er passert og status ikke er attended/waitlist
     @Transactional
+    @Scheduled(cron = "0 0 0 * * *", zone = "Europe/Oslo")
     public EventReg2 markNoShow(UUID id) {
         var reg = findById(id);
         LocalDateTime now = LocalDateTime.now(clock);
@@ -164,32 +166,17 @@ public class EventReg3Service {
         return new OtpResponse(code, expiresAt);
     }
 
-    
-    /*boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input);
-
-    Attendance_Values neededValue = Attendance_Values.confirmed;
-    LocalDateTime TimeNow = LocalDateTime.now();*/
-
-
-   /* public boolean validateOtp(String input) {
-
-        if (input == null) return false;
-        boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, input.trim());
-        return valid;
-    }*/
-
     // Bekreft oppmøte med OTP
     @Transactional
     public EventReg2 confirmAttendance(UUID id, String otpInput) {
 
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, otpInput);
+        var reg = findById(id);
+        LocalDateTime now = LocalDateTime.now(clock);
 
         if (!valid) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Feil kode");
         }
-
-        var reg = findById(id);
-        LocalDateTime now = LocalDateTime.now(clock);
 
         if (reg.getAttStatus() != Attendance_Values.confirmed) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,
