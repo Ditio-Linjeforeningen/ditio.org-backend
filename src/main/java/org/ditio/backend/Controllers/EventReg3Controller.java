@@ -40,8 +40,8 @@ public class EventReg3Controller {
 
     private final EventReg3Service service;
 
-    public EventReg3Controller(EventReg3Service service) {
-        this.service = service;
+    public EventReg3Controller(EventReg3Service eventReg3Service) {
+        this.service = eventReg3Service;
     }
 
     // OTP nåværende kode
@@ -77,10 +77,11 @@ public class EventReg3Controller {
     // DTO for OTP input (som i din original)
     public record Verify_Attendance_Code_DTO(String code) {}
     
-    // Merk no_show hvis vilkår er oppfylt
-    /*@PutMapping("/Activate_Quarantine_enddate/{id}")
-    public ResponseEntity<?> markNoShow(@PathVariable UUID id) {
-        var saved = service.markNoShow(id);
+    //There is an automatic one as well in the service:
+    @PutMapping("/Manual_quarantine/{id}")
+    public ResponseEntity<?> Manually_mark_student_as_quarantined(@PathVariable UUID id) {
+
+        var saved = service.Manually_mark_student_as_quarantined(id);
         // Hvis ingenting ble endret, kan du velge å returnere 204/200 med nåværende status
         return ResponseEntity.ok(Map.of(
                 "user_id", saved.getUserId(),
@@ -89,15 +90,16 @@ public class EventReg3Controller {
                 "deadline", saved.getDeadline(),
                 "quarantine_until", saved.getQuarantine_end()
         ));
-    }*/
+    }
 
-    // Bekreft oppmøte med OTP
+    // Bekreft oppmøte med OTP: One time password
     @PutMapping("/Attended/{id}")
-    public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code_DTO body,
-                                                 @PathVariable("id") UUID id) {
+    public ResponseEntity<?> attendance_registration_with_otp(
+        @RequestBody Verify_Attendance_Code_DTO body, 
+        @PathVariable("id") UUID id
+    ) {
         
         var saved = service.confirmAttendance(id, body.code());
-
           Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("user_id", saved.getUserId());
             payload.put("event_id", saved.getEventId());

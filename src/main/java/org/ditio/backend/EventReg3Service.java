@@ -130,10 +130,37 @@ public class EventReg3Service {
         return repository.save(reg);
     }
 
+    // Cron-format: "sekunder minutter timer dager måneder ukedager"
+    // "0 0 0 * * *" betyr hver eneste dag kl. 00:00:00
+    //Hvis du vil teste det raskt uten å vente til midnatt, 
+    // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
+   @Scheduled(cron = "0 0 0 * * *" )
+    public void Auto_midnight_put_students_in_quarantine() {
+        LocalDateTime now = LocalDateTime.now();
+
+        List<EventReg2> overdueList = repository.find_All_Not_Attended_Event(now, Attendance_Values.no_show);
+
+        if (overdueList.isEmpty()) {
+            return; // Ingen ting å gjøre
+        }
+
+        for (EventReg2 att : overdueList) {
+            change_status_to_quarantine_with_date(att);
+        }
+        
+        System.out.println("Automatisk sjekk fullført. Behandlet " + overdueList.size() + " rader.");
+    }
+
+    // Selve logikken som endrer status og setter karantene-dato
+    private void change_status_to_quarantine_with_date(EventReg2 att) {
+        att.setAttStatus(Attendance_Values.no_show);
+        att.setQuarantine_end(LocalDateTime.now().plusDays(30)); // Eksempel: 30 dager karantene
+        repository.save(att);
+    }
+
     // Merk som no_show hvis fristen er passert og status ikke er attended/waitlist
     @Transactional
-    @Scheduled(cron = "0 0 0 * * *", zone = "Europe/Oslo")
-    public EventReg2 markNoShow(UUID id) {
+    public EventReg2 Manually_mark_student_as_quarantined(UUID id) {
         var reg = findById(id);
         LocalDateTime now = LocalDateTime.now(clock);
 

@@ -1738,3 +1738,211 @@ java.lang.NullPointerException
 2026-05-12T14:21:05.188+02:00 DEBUG 27148 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
 2026-05-12T14:21:21.192+02:00 DEBUG 27148 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
 2026-05-12T14:21:21.212+02:00 DEBUG 27148 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-12T14:32:02.869+02:00  INFO 29432 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 29432 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in C:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-12T14:32:02.874+02:00  INFO 29432 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-12T14:32:04.655+02:00  INFO 29432 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-12T14:32:04.748+02:00  INFO 29432 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 4 JPA repository interfaces.
+2026-05-12T14:32:05.887+02:00  INFO 29432 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-12T14:32:05.908+02:00  INFO 29432 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-12T14:32:05.908+02:00  INFO 29432 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-12T14:32:06.016+02:00  INFO 29432 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3042 ms
+2026-05-12T14:32:06.691+02:00  INFO 29432 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-12T14:32:06.976+02:00  INFO 29432 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3df04fa1
+2026-05-12T14:32:06.979+02:00  INFO 29432 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-12T14:32:07.030+02:00  INFO 29432 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-12T14:32:07.179+02:00  INFO 29432 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.071s)
+2026-05-12T14:32:07.223+02:00  INFO 29432 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.11
+2026-05-12T14:32:07.250+02:00  INFO 29432 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3.12 - trigger null if delete"
+2026-05-12T14:32:07.374+02:00  INFO 29432 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v3.12 (execution time 00:00.077s)
+2026-05-12T14:32:07.654+02:00  INFO 29432 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-12T14:32:07.812+02:00  INFO 29432 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-12T14:32:08.597+02:00  INFO 29432 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-12T14:32:08.715+02:00  INFO 29432 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-12T14:32:09.766+02:00  INFO 29432 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-12T14:32:09.775+02:00  INFO 29432 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T14:32:09.944+02:00  INFO 29432 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-12T14:32:11.304+02:00  WARN 29432 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-12T14:32:11.830+02:00  INFO 29432 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-12T14:32:13.057+02:00  INFO 29432 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-12T14:32:13.193+02:00  INFO 29432 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-12T14:32:13.210+02:00  INFO 29432 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 11.091 seconds (process running for 11.891)
+2026-05-12T14:32:26.717+02:00  INFO 29432 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-12T14:32:26.717+02:00  INFO 29432 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-12T14:32:26.720+02:00  INFO 29432 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-05-12T14:32:37.091+02:00  INFO 29432 --- [backend] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 664 ms
+2026-05-12T14:32:41.804+02:00 DEBUG 29432 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T14:33:10.175+02:00 DEBUG 29432 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-12T14:33:10.214+02:00 DEBUG 29432 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-12T14:56:42.956+02:00  WARN 29432 --- [backend] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m5s940ms338µs800ns).
+2026-05-12T15:01:19.710+02:00  WARN 29432 --- [backend] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m6s818ms749µs200ns).
+2026-05-12T16:20:59.304+02:00  INFO 29432 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-12T16:20:59.415+02:00  INFO 29432 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-12T16:20:59.560+02:00  INFO 29432 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:20:59.695+02:00  INFO 29432 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-12T16:20:59.727+02:00  INFO 29432 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-12T16:21:01.884+02:00  INFO 31084 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 31084 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-12T16:21:01.889+02:00  INFO 31084 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-12T16:21:03.750+02:00  INFO 31084 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-12T16:21:03.847+02:00  INFO 31084 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+2026-05-12T16:21:05.075+02:00  INFO 31084 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-12T16:21:05.105+02:00  INFO 31084 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-12T16:21:05.106+02:00  INFO 31084 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-12T16:21:05.221+02:00  INFO 31084 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3241 ms
+2026-05-12T16:21:06.053+02:00  INFO 31084 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-12T16:21:06.348+02:00  INFO 31084 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28b2e4d8
+2026-05-12T16:21:06.351+02:00  INFO 31084 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-12T16:21:06.417+02:00  INFO 31084 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-12T16:21:06.671+02:00  INFO 31084 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.149s)
+2026-05-12T16:21:06.719+02:00  INFO 31084 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-12T16:21:06.728+02:00  INFO 31084 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-12T16:21:06.892+02:00  INFO 31084 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-12T16:21:06.980+02:00  INFO 31084 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-12T16:21:07.680+02:00  INFO 31084 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-12T16:21:07.816+02:00  INFO 31084 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-12T16:21:09.260+02:00  INFO 31084 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-12T16:21:09.272+02:00  INFO 31084 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:21:09.397+02:00  INFO 31084 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-12T16:21:10.871+02:00  WARN 31084 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-12T16:21:11.326+02:00  INFO 31084 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-12T16:21:12.021+02:00  INFO 31084 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-12T16:21:12.138+02:00  INFO 31084 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-12T16:21:12.158+02:00  INFO 31084 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 10.938 seconds (process running for 11.712)
+2026-05-12T16:21:26.598+02:00  INFO 31084 --- [backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-12T16:21:26.599+02:00  INFO 31084 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-12T16:21:26.601+02:00  INFO 31084 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-12T16:22:02.204+02:00  INFO 31084 --- [backend] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 583 ms
+2026-05-12T16:22:06.994+02:00 DEBUG 31084 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:22:20.879+02:00 DEBUG 31084 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-12T16:22:20.894+02:00 DEBUG 31084 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-12T16:22:20.946+02:00 DEBUG 31084 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-12T16:24:30.973+02:00  INFO 31084 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-12T16:24:30.986+02:00  INFO 31084 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-12T16:24:30.995+02:00  INFO 31084 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:24:30.999+02:00  INFO 31084 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-12T16:24:31.009+02:00  INFO 31084 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-12T16:24:32.670+02:00  INFO 4300 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 4300 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-12T16:24:32.677+02:00  INFO 4300 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-12T16:24:34.340+02:00  INFO 4300 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-12T16:24:34.430+02:00  INFO 4300 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 4 JPA repository interfaces.
+2026-05-12T16:24:35.515+02:00  INFO 4300 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-12T16:24:35.542+02:00  INFO 4300 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-12T16:24:35.543+02:00  INFO 4300 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-12T16:24:35.657+02:00  INFO 4300 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2887 ms
+2026-05-12T16:24:36.340+02:00  INFO 4300 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-12T16:24:36.591+02:00  INFO 4300 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6ab50d1c
+2026-05-12T16:24:36.594+02:00  INFO 4300 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-12T16:24:36.647+02:00  INFO 4300 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-12T16:24:36.774+02:00  INFO 4300 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.063s)
+2026-05-12T16:24:36.823+02:00  INFO 4300 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-12T16:24:36.833+02:00  INFO 4300 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-12T16:24:36.992+02:00  INFO 4300 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-12T16:24:37.127+02:00  INFO 4300 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-12T16:24:37.889+02:00  INFO 4300 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-12T16:24:38.003+02:00  INFO 4300 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-12T16:24:39.405+02:00  INFO 4300 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-12T16:24:39.418+02:00  INFO 4300 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:24:39.539+02:00  INFO 4300 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-12T16:24:40.850+02:00  WARN 4300 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-12T16:24:41.298+02:00  INFO 4300 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-12T16:24:41.974+02:00  INFO 4300 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-12T16:24:42.071+02:00  INFO 4300 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-12T16:24:42.088+02:00  INFO 4300 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 10.079 seconds (process running for 10.642)
+2026-05-12T16:24:52.608+02:00  INFO 4300 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-12T16:24:52.608+02:00  INFO 4300 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-12T16:24:52.610+02:00  INFO 4300 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-12T16:24:53.562+02:00  INFO 4300 --- [backend] [http-nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 559 ms
+2026-05-12T16:25:05.032+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:25:54.429+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:26:26.785+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:28:13.462+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:28:25.226+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-12T16:28:25.285+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
+2026-05-12T16:28:29.043+02:00 DEBUG 4300 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-12T16:45:34.774+02:00  INFO 4300 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-12T16:45:34.825+02:00  INFO 4300 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-12T16:45:34.865+02:00  INFO 4300 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:45:34.898+02:00  INFO 4300 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-12T16:45:34.911+02:00  INFO 4300 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-12T16:45:36.803+02:00  INFO 4340 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 4340 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-12T16:45:36.809+02:00  INFO 4340 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-12T16:45:38.746+02:00  INFO 4340 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-12T16:45:38.830+02:00  INFO 4340 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 4 JPA repository interfaces.
+2026-05-12T16:45:40.398+02:00  INFO 4340 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-12T16:45:40.417+02:00  INFO 4340 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-12T16:45:40.417+02:00  INFO 4340 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-12T16:45:40.515+02:00  INFO 4340 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3616 ms
+2026-05-12T16:45:41.216+02:00  INFO 4340 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-12T16:45:41.555+02:00  INFO 4340 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@21d8da75
+2026-05-12T16:45:41.558+02:00  INFO 4340 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-12T16:45:41.609+02:00  INFO 4340 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-12T16:45:41.746+02:00  INFO 4340 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.064s)
+2026-05-12T16:45:41.789+02:00  INFO 4340 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-12T16:45:41.799+02:00  INFO 4340 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-12T16:45:41.955+02:00  INFO 4340 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-12T16:45:42.072+02:00  INFO 4340 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-12T16:45:42.686+02:00  INFO 4340 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-12T16:45:42.808+02:00  INFO 4340 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-12T16:45:43.846+02:00  INFO 4340 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-12T16:45:43.856+02:00  INFO 4340 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:45:43.979+02:00  INFO 4340 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-12T16:45:45.394+02:00  WARN 4340 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-12T16:45:45.883+02:00  INFO 4340 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-12T16:45:46.743+02:00  INFO 4340 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-12T16:45:46.870+02:00  INFO 4340 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-12T16:45:46.890+02:00  INFO 4340 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 10.762 seconds (process running for 11.458)
+2026-05-12T16:45:47.427+02:00 DEBUG 4340 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-12T16:46:26.582+02:00  INFO 4340 --- [backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-12T16:46:26.583+02:00  INFO 4340 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-12T16:46:26.584+02:00  INFO 4340 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-12T16:46:47.483+02:00 DEBUG 4340 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-12T16:47:47.507+02:00 DEBUG 4340 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-12T16:48:47.515+02:00 DEBUG 4340 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-12T16:48:55.254+02:00  INFO 4340 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-12T16:48:55.275+02:00  INFO 4340 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-12T16:48:55.288+02:00  INFO 4340 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-12T16:48:55.296+02:00  INFO 4340 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-12T16:48:55.308+02:00  INFO 4340 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
