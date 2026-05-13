@@ -134,7 +134,7 @@ public class EventReg3Service {
     // "0 0 0 * * *" betyr hver eneste dag kl. 00:00:00
     //Hvis du vil teste det raskt uten å vente til midnatt, 
     // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
-   @Scheduled(cron = "0 */2 * * * *" )
+   @Scheduled(cron = "0 */1 * * * *" )
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 
@@ -154,7 +154,7 @@ public class EventReg3Service {
     // Selve logikken som endrer status og setter karantene-dato
     private void change_status_to_quarantine_with_date(EventReg2 att) {
         att.setAttStatus(Attendance_Values.no_show);
-        att.setQuarantine_end(LocalDateTime.now().plusDays(30)); // Eksempel: 30 dager karantene
+        att.setQuarantine_end(att.getDeadline().plusDays(30)); // Eksempel: 30 dager karantene
         repository.save(att);
     }
 
