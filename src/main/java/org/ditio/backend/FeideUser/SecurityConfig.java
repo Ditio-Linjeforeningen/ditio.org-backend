@@ -22,16 +22,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable()) //slå på i produktion
             .authorizeHttpRequests(auth -> auth
                 //Alle kan se events
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/events/**").permitAll()
                 
                 // Event CRUD kræver admin rettigheder
                 .requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
-
-                // Kun for test     
-                .requestMatchers("/feide/test").authenticated()
 
                 //Bare superadmin kan ændre roller
                 .requestMatchers("/api/admin/**").hasAnyRole("SUPER_ADMIN")
