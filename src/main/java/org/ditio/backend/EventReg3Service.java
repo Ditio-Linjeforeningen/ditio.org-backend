@@ -134,7 +134,7 @@ public class EventReg3Service {
     // "0 0 0 * * *" betyr hver eneste dag kl. 00:00:00
     //Hvis du vil teste det raskt uten å vente til midnatt, 
     // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
-   @Scheduled(cron = "0 */1 * * * *" )
+   @Scheduled(cron = "0 */5 * * * *" )
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 

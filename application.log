@@ -1,22 +1,117 @@
-2026-05-13T15:09:22.864+02:00  INFO 11524 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 11524 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in C:\Users\Ecodo\backend3\ditio.org-backend)
-2026-05-13T15:09:22.874+02:00  INFO 11524 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
-2026-05-13T15:09:25.104+02:00  INFO 11524 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-13T15:09:25.204+02:00  INFO 11524 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 4 JPA repository interfaces.
-2026-05-13T15:09:26.406+02:00  INFO 11524 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-05-13T15:09:26.432+02:00  INFO 11524 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-13T15:09:26.432+02:00  INFO 11524 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-05-13T15:09:26.560+02:00  INFO 11524 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3603 ms
-2026-05-13T15:09:27.533+02:00  INFO 11524 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-13T15:09:27.976+02:00  INFO 11524 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2f61de04
-2026-05-13T15:09:27.981+02:00  INFO 11524 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-13T15:09:28.085+02:00  INFO 11524 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
-2026-05-13T15:09:28.378+02:00  INFO 11524 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.128s)
-2026-05-13T15:09:28.419+02:00  INFO 11524 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
-2026-05-13T15:09:28.428+02:00  INFO 11524 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2026-05-13T15:09:28.638+02:00  INFO 11524 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-13T15:09:28.760+02:00  INFO 11524 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
-2026-05-13T15:09:29.691+02:00  INFO 11524 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-13T15:09:29.836+02:00  INFO 11524 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-05-14T12:47:10.408+02:00  INFO 33396 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 33396 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in C:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-14T12:47:10.421+02:00  INFO 33396 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-14T12:47:12.290+02:00  INFO 33396 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-14T12:47:12.399+02:00  INFO 33396 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 4 JPA repository interfaces.
+2026-05-14T12:47:13.522+02:00  INFO 33396 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-14T12:47:13.547+02:00  INFO 33396 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-14T12:47:13.548+02:00  INFO 33396 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-14T12:47:13.651+02:00  INFO 33396 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3140 ms
+2026-05-14T12:47:14.300+02:00  INFO 33396 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-14T12:47:15.402+02:00  WARN 33396 --- [backend] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08001
+Error Code : 0
+Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+
+2026-05-14T12:47:15.408+02:00  INFO 33396 --- [backend] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-14T12:47:15.425+02:00  INFO 33396 --- [backend] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-14T12:47:15.446+02:00 ERROR 33396 --- [backend] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08001
+Error Code : 0
+Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:976) ~[spring-context-7.0.3.jar:7.0.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.3.jar:7.0.3]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.2.jar:4.0.2]
+	at org.ditio.backend.BackendApplication.main(BackendApplication.java:13) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08001
+Error Code : 0
+Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309) ~[spring-beans-7.0.3.jar:7.0.3]
+	... 10 common frames omitted
+Caused by: org.flywaydb.core.internal.exception.sqlExceptions.FlywaySqlUnableToConnectToDbException: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08001
+Error Code : 0
+Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:70) ~[flyway-core-11.14.1.jar:na]
+	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:76) ~[flyway-core-11.14.1.jar:na]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:142) ~[flyway-core-11.14.1.jar:na]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:186) ~[flyway-core-11.14.1.jar:na]
+	at org.springframework.boot.flyway.autoconfigure.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:67) ~[spring-boot-flyway-4.0.2.jar:4.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.3.jar:7.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.3.jar:7.0.3]
+	... 17 common frames omitted
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:373) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:57) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:290) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.Driver.makeConnection(Driver.java:448) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.9.jar:42.7.9]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-7.0.2.jar:na]
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:65) ~[flyway-core-11.14.1.jar:na]
+	... 23 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:639) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:543) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:594) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:284) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:659) ~[na:na]
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:261) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.PGStream.<init>(PGStream.java:122) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:146) ~[postgresql-42.7.9.jar:42.7.9]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:289) ~[postgresql-42.7.9.jar:42.7.9]
+	... 35 common frames omitted
+
+2026-05-14T12:47:42.914+02:00  INFO 14292 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 14292 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-14T12:47:42.918+02:00  INFO 14292 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-14T12:47:45.642+02:00  INFO 14292 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-14T12:47:45.769+02:00  INFO 14292 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 4 JPA repository interfaces.
+2026-05-14T12:47:47.005+02:00  INFO 14292 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-14T12:47:47.031+02:00  INFO 14292 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-14T12:47:47.031+02:00  INFO 14292 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-14T12:47:47.200+02:00  INFO 14292 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 4195 ms
+2026-05-14T12:47:48.254+02:00  INFO 14292 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-14T12:47:48.566+02:00  INFO 14292 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4627dfda
+2026-05-14T12:47:48.569+02:00  INFO 14292 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-14T12:47:48.632+02:00  INFO 14292 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-14T12:47:48.859+02:00  INFO 14292 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.102s)
+2026-05-14T12:47:48.916+02:00  INFO 14292 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-14T12:47:48.926+02:00  INFO 14292 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-14T12:47:49.123+02:00  INFO 14292 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-14T12:47:49.245+02:00  INFO 14292 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-14T12:47:49.992+02:00  INFO 14292 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-14T12:47:50.115+02:00  INFO 14292 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -28,44 +123,193 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-05-13T15:09:31.224+02:00  INFO 11524 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-13T15:09:31.236+02:00  INFO 11524 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-13T15:09:31.380+02:00  INFO 11524 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-05-13T15:09:32.921+02:00  WARN 11524 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-13T15:09:33.377+02:00  INFO 11524 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2026-05-13T15:09:34.283+02:00  INFO 11524 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
-2026-05-13T15:09:34.613+02:00  INFO 11524 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
-2026-05-13T15:09:34.650+02:00  INFO 11524 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 12.48 seconds (process running for 13.008)
-2026-05-13T15:09:58.432+02:00  INFO 11524 --- [backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-05-13T15:09:58.432+02:00  INFO 11524 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-05-13T15:09:58.432+02:00  INFO 11524 --- [backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2026-05-13T15:09:59.424+02:00  INFO 11524 --- [backend] [http-nio-8080-exec-6] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 546 ms
-2026-05-13T15:10:00.563+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
-2026-05-13T15:10:03.557+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:10:16.552+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
-2026-05-13T15:10:16.588+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
-2026-05-13T15:10:32.820+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:10:48.323+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
-2026-05-13T15:10:48.332+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
-2026-05-13T15:11:06.720+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
-2026-05-13T15:11:06.726+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
-2026-05-13T15:11:20.025+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:11:23.599+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
-2026-05-13T15:11:23.603+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
-2026-05-13T15:11:23.621+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
-2026-05-13T15:11:26.586+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:12:02.288+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
-2026-05-13T15:12:02.294+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
-2026-05-13T15:12:02.302+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
-2026-05-13T15:12:07.065+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:12:52.927+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:12:59.366+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:15:00.043+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
-2026-05-13T15:15:00.089+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
-2026-05-13T15:15:00.122+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
-2026-05-13T15:15:00.144+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
-2026-05-13T15:15:00.149+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
-2026-05-13T15:15:04.923+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
-2026-05-13T15:16:06.868+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0
-2026-05-13T15:20:00.048+02:00 DEBUG 11524 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
-2026-05-13T15:20:55.367+02:00 DEBUG 11524 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0
+2026-05-14T12:47:51.235+02:00  INFO 14292 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-14T12:47:51.246+02:00  INFO 14292 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T12:47:51.404+02:00  INFO 14292 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-14T12:47:53.006+02:00  WARN 14292 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-14T12:47:53.621+02:00  INFO 14292 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-14T12:47:54.512+02:00  INFO 14292 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-14T12:47:54.649+02:00  INFO 14292 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-14T12:47:54.669+02:00  INFO 14292 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 12.396 seconds (process running for 13.026)
+2026-05-14T12:48:00.642+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:48:59.265+02:00  INFO 14292 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-14T12:48:59.265+02:00  INFO 14292 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-14T12:48:59.267+02:00  INFO 14292 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-05-14T12:49:00.014+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:49:00.393+02:00  INFO 14292 --- [backend] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 639 ms
+2026-05-14T12:49:17.750+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T12:49:45.179+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T12:49:45.234+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T12:50:00.006+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:50:01.487+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T12:50:13.588+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T12:50:13.595+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T12:50:24.448+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T12:50:24.453+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T12:51:00.015+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:52:00.001+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:53:00.001+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:54:00.001+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:55:00.004+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:56:00.002+02:00 DEBUG 14292 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T12:56:07.637+02:00 DEBUG 14292 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T12:56:37.704+02:00  INFO 14292 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-14T12:56:37.739+02:00  INFO 14292 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-14T12:56:37.795+02:00  INFO 14292 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T12:56:37.849+02:00  INFO 14292 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-14T12:56:37.870+02:00  INFO 14292 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-14T12:56:40.575+02:00  INFO 1956 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 1956 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-14T12:56:40.581+02:00  INFO 1956 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-14T12:56:42.594+02:00  INFO 1956 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-14T12:56:42.693+02:00  INFO 1956 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 4 JPA repository interfaces.
+2026-05-14T12:56:44.217+02:00  INFO 1956 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-14T12:56:44.247+02:00  INFO 1956 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-14T12:56:44.249+02:00  INFO 1956 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-14T12:56:44.423+02:00  INFO 1956 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3732 ms
+2026-05-14T12:56:45.367+02:00  INFO 1956 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-14T12:56:45.779+02:00  INFO 1956 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@355493bf
+2026-05-14T12:56:45.781+02:00  INFO 1956 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-14T12:56:45.841+02:00  INFO 1956 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-14T12:56:46.028+02:00  INFO 1956 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.094s)
+2026-05-14T12:56:46.081+02:00  INFO 1956 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-14T12:56:46.093+02:00  INFO 1956 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-14T12:56:46.324+02:00  INFO 1956 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-14T12:56:46.487+02:00  INFO 1956 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-14T12:56:47.617+02:00  INFO 1956 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-14T12:56:47.992+02:00  INFO 1956 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-14T12:56:49.765+02:00  INFO 1956 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-14T12:56:49.774+02:00  INFO 1956 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T12:56:49.934+02:00  INFO 1956 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-14T12:56:51.771+02:00  WARN 1956 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-14T12:56:52.344+02:00  INFO 1956 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-14T12:56:53.238+02:00  INFO 1956 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-14T12:56:53.365+02:00  INFO 1956 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-14T12:56:53.393+02:00  INFO 1956 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 13.576 seconds (process running for 14.386)
+2026-05-14T12:56:53.900+02:00  INFO 1956 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-14T12:56:53.900+02:00  INFO 1956 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-14T12:56:53.900+02:00  INFO 1956 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-05-14T12:56:54.900+02:00  INFO 1956 --- [backend] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 593 ms
+2026-05-14T12:57:26.270+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T12:57:26.319+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T12:57:26.362+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T12:57:40.041+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T12:58:08.032+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T12:58:08.043+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T12:58:08.053+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T12:58:13.951+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T12:58:36.494+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T12:58:36.499+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T12:59:06.043+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T12:59:06.051+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T12:59:06.058+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T12:59:10.066+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:00:00.350+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T13:00:00.370+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:00:00.383+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
+2026-05-14T13:02:28.247+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:05:00.002+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T13:06:58.029+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:06:58.046+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T13:06:59.533+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:07:08.045+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:07:33.189+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:07:33.195+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T13:07:56.473+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:08:21.441+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T13:08:21.447+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T13:08:21.452+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T13:08:25.561+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:09:42.304+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T13:09:42.312+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T13:10:00.001+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T13:10:00.008+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:10:00.012+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
+2026-05-14T13:10:07.727+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:10:56.159+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:10:56.163+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T13:11:29.216+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T13:11:29.222+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T13:11:29.226+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T13:11:34.785+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:12:57.583+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:14:06.254+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:14:06.267+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
+2026-05-14T13:14:11.781+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:14:25.996+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:15:00.010+02:00 DEBUG 1956 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T13:15:58.640+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:15:58.649+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : delete from event_reg2 where event_reg_id=?
+2026-05-14T13:16:07.535+02:00 DEBUG 1956 --- [backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:16:42.029+02:00  INFO 1956 --- [backend] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-14T13:16:42.050+02:00  INFO 1956 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-14T13:16:42.070+02:00  INFO 1956 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T13:16:42.083+02:00  INFO 1956 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-14T13:16:42.094+02:00  INFO 1956 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-14T13:16:43.981+02:00  INFO 28028 --- [backend] [main] org.ditio.backend.BackendApplication     : Starting BackendApplication using Java 25.0.2 with PID 28028 (C:\Users\Ecodo\backend3\ditio.org-backend\target\classes started by Ecodo in c:\Users\Ecodo\backend3\ditio.org-backend)
+2026-05-14T13:16:43.986+02:00  INFO 28028 --- [backend] [main] org.ditio.backend.BackendApplication     : The following 1 profile is active: "dev"
+2026-05-14T13:16:45.692+02:00  INFO 28028 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-14T13:16:45.817+02:00  INFO 28028 --- [backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 4 JPA repository interfaces.
+2026-05-14T13:16:47.156+02:00  INFO 28028 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-05-14T13:16:47.194+02:00  INFO 28028 --- [backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-14T13:16:47.196+02:00  INFO 28028 --- [backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-14T13:16:47.347+02:00  INFO 28028 --- [backend] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3283 ms
+2026-05-14T13:16:48.141+02:00  INFO 28028 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-14T13:16:48.438+02:00  INFO 28028 --- [backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@300aa927
+2026-05-14T13:16:48.440+02:00  INFO 28028 --- [backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-14T13:16:48.496+02:00  INFO 28028 --- [backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/postgres (PostgreSQL 18.2)
+2026-05-14T13:16:48.662+02:00  INFO 28028 --- [backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.092s)
+2026-05-14T13:16:48.715+02:00  INFO 28028 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3.12
+2026-05-14T13:16:48.733+02:00  INFO 28028 --- [backend] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-05-14T13:16:49.116+02:00  INFO 28028 --- [backend] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-14T13:16:49.354+02:00  INFO 28028 --- [backend] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-05-14T13:16:50.083+02:00  INFO 28028 --- [backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-14T13:16:50.237+02:00  INFO 28028 --- [backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.2
+	Default catalog/schema: postgres/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-14T13:16:51.596+02:00  INFO 28028 --- [backend] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-14T13:16:51.602+02:00  INFO 28028 --- [backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-14T13:16:51.771+02:00  INFO 28028 --- [backend] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-14T13:16:53.377+02:00  WARN 28028 --- [backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-14T13:16:53.941+02:00  INFO 28028 --- [backend] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-05-14T13:16:54.831+02:00  INFO 28028 --- [backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-05-14T13:16:54.966+02:00  INFO 28028 --- [backend] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-05-14T13:16:54.990+02:00  INFO 28028 --- [backend] [main] org.ditio.backend.BackendApplication     : Started BackendApplication in 11.687 seconds (process running for 12.444)
+2026-05-14T13:16:55.093+02:00  INFO 28028 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-14T13:16:55.093+02:00  INFO 28028 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-14T13:16:55.099+02:00  INFO 28028 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2026-05-14T13:16:56.019+02:00  INFO 28028 --- [backend] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 546 ms
+2026-05-14T13:17:07.831+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T13:17:07.882+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T13:17:07.934+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T13:17:38.089+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:18:15.348+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select e1_0.event_id,e1_0.description,e1_0.end_time,e1_0.is_published,e1_0.location,e1_0.max_attendees,e1_0.start_time,e1_0.title from event e1_0 where e1_0.event_id=?
+2026-05-14T13:18:15.354+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select u1_0.id,u1_0.email,u1_0.navn,u1_0.quarantine_until,u1_0.role from users u1_0 where u1_0.id=?
+2026-05-14T13:18:15.359+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : insert into event_reg2 (att_status,deadline,event_id,quarantine_end,user_id,event_reg_id) values (?,?,?,?,?,?)
+2026-05-14T13:18:41.011+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:18:52.921+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:19:36.977+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:19:36.989+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
+2026-05-14T13:19:44.183+02:00 DEBUG 28028 --- [backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0
+2026-05-14T13:20:00.388+02:00 DEBUG 28028 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.deadline<? and er1_0.att_status<>?
+2026-05-14T13:20:00.399+02:00 DEBUG 28028 --- [backend] [scheduling-1] org.hibernate.SQL                        : select er1_0.event_reg_id,er1_0.att_status,er1_0.deadline,er1_0.event_id,er1_0.quarantine_end,er1_0.user_id from event_reg2 er1_0 where er1_0.event_reg_id=?
+2026-05-14T13:20:00.404+02:00 DEBUG 28028 --- [backend] [scheduling-1] org.hibernate.SQL                        : update event_reg2 set att_status=?,deadline=?,event_id=?,quarantine_end=?,user_id=? where event_reg_id=?
