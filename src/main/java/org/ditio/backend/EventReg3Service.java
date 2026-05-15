@@ -135,6 +135,7 @@ public class EventReg3Service {
     //Hvis du vil teste det raskt uten å vente til midnatt, 
     // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
    @Scheduled(cron = "0 */5 * * * *" )
+   //Should it be private?
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 
@@ -149,6 +150,19 @@ public class EventReg3Service {
         }
         
         System.out.println("Automatisk sjekk fullført. Behandlet " + overdueList.size() + " rader.");
+    }
+
+    private Object check_if_user_already_registered_to_event(EventReg2 user_id, EventReg2 event_id ){
+        /*List<EventReg2> confirmed_list = repository.findAllByAttStatusNot(Attendance_Values.confirmed);
+        List<EventReg2> waitlist_list = repository.findAllByAttStatusNot(Attendance_Values.waitlist);*/
+        List<EventReg2> confirmed_and_waitlist_list = repository.findAllByAttStatusNot(Attendance_Values.confirmed, Attendance_Values.waitlist);
+        for (int i = 0; i <= confirmed_and_waitlist_list.size(); i++){
+            if (confirmed_and_waitlist_list.contains(user_id.getUserId(), event_id.getEventId())){
+                return null; //already registered
+            };
+
+
+        }
     }
 
     // Selve logikken som endrer status og setter karantene-dato
