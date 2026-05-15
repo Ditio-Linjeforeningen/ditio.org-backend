@@ -74,6 +74,11 @@ public class EventReg3Controller {
         return ResponseEntity.ok(service.delete(id));
     }
 
+    @DeleteMapping("/Delete_All_eventRegs")
+    public ResponseEntity<List<EventReg2>> deleteAllEventRegs(){
+        return ResponseEntity.ok(service.deleteAll());
+    }
+
     // DTO for OTP input (som i din original)
     public record Verify_Attendance_Code_DTO(String code) {}
     
@@ -81,7 +86,7 @@ public class EventReg3Controller {
     @PutMapping("/Manual_quarantine/{id}")
     public ResponseEntity<?> Manually_mark_student_as_quarantined(@PathVariable UUID id) {
 
-        var saved = service.Manually_mark_student_as_quarantined(id);
+        var saved = service.Manually_mark_student_as_quarantined_if_noshow(id);
         // Hvis ingenting ble endret, kan du velge å returnere 204/200 med nåværende status
         return ResponseEntity.ok(Map.of(
                 "user_id", saved.getUserId(),

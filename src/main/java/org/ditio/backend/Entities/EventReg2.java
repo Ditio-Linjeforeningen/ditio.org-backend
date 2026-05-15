@@ -47,7 +47,7 @@ public class EventReg2 {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
-    private Event event; 
+    private Event event;
 
     public EventReg2() {}
 
