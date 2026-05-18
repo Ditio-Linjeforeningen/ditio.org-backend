@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ditio.backend.EventReg2Service;
+//import org.ditio.backend.EventReg2Service;
 import org.ditio.backend.EventReg3Service;
 import org.ditio.backend.Entities.EventReg2;
 import org.ditio.backend.Entities.User;

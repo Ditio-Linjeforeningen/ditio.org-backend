@@ -49,6 +49,8 @@ public class EventReg2 {
     @JoinColumn(name = "event_id", insertable = false, updatable = false)
     private Event event;
 
+    
+
     public EventReg2() {}
 
     // getters/setters

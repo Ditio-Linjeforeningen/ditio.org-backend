@@ -3,6 +3,7 @@ package org.ditio.backend;
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.Event;
 import org.ditio.backend.Entities.EventReg2;
+import org.ditio.backend.Entities.User;
 import org.ditio.backend.Enums.Attendance_Values;
 import org.ditio.backend.Repositories.EventReg2Repository;
 import org.ditio.backend.Repositories.EventRepository;
@@ -31,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.Collections;
 
@@ -135,14 +137,44 @@ public class EventReg3Service {
         }
     }
 }
+// ------- WORK IN PROGESS ---- Needs working foreign keys
+    /*private void check_max_attendance(EventReg2 new_eventReg){
+    
+        //List<EventReg2> list_of_exisiting_eventRegs = repository.findAll();
+        List <EventReg2> confirmed_counts = repository.findAllByAttStatusNot(Attendance_Values.confirmed);
+        List <EventReg2> waitlist_counts = repository.findAllByAttStatusNot(Attendance_Values.waitlist);
+        
+        LocalDateTime now = LocalDateTime.now();
+        int maximum_people = event.getMaxAttendees(); //<----- Event-EventReg need to be connected
+                                                    //  for EventReg.getMaxAttendees() to work
+        
+        if(now.isBefore(event.getStartTime())){
+            if((confirmed_counts.size() > maximum_people) && (waitlist_counts.size() == 0)){
+                return;
+            }
+            if(confirmed_counts.size()==maximum_people){
+                new_eventReg.setAttStatus(Attendance_Values.waitlist);
+            }
+            if ((confirmed_counts.size() > maximum_people) && (waitlist_counts.size() < 0)){
+                for (EventReg2 i : waitlist_counts){
+                    i.setAttStatus(Attendance_Values.confirmed);
+                }
+            repository.save(new_eventReg);
+            }
+        }
+        else return;
+            
+    } */
 
     @Transactional
     public EventReg2 create(EventReg2 reg) {
         // 1) Valider domene-regler
+        //If now is before start_time
         applyDeadline(reg);
         add_quarantine_until(reg);
         blockIfUserInQuarantine(reg);
         check_if_user_already_registered_to_event(reg);
+        //check_max_attendance(reg);
 
 
         // 2) Initier status hvis nødvendig
@@ -156,7 +188,7 @@ public class EventReg3Service {
     // "0 0 0 * * *" betyr hver eneste dag kl. 00:00:00
     //Hvis du vil teste det raskt uten å vente til midnatt, 
     // kan du endre det til f.eks. 0 */5 * * * * (hvert 5. minutt).
-   @Scheduled(cron = "0 */5 * * * *" )
+   @Scheduled(cron = "0 */1 * * * *" )
    //Should it be private?
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
@@ -181,6 +213,28 @@ public class EventReg3Service {
         att.setQuarantine_end(att.getDeadline().plusDays(30)); // Eksempel: 30 dager karantene
         repository.save(att);
     }
+
+    //"1 0 * * *" = 1 min after midnight every day
+    @Scheduled(cron = "0 */2 * * * *")
+    @Transactional
+    public void checkIfQuarantineIsOver() {
+        LocalDateTime now = LocalDateTime.now();
+
+        // Mest presist: hent kun de som faktisk har utløpt karantene
+        List<User> expired = userRepository.findAllByQuarantineUntilBefore(now);
+        if (expired.isEmpty()) {
+            return;
+        }
+
+        for (User quarantinedUser : expired) {
+            quarantinedUser.setQuarantine_until(null);
+        }
+
+
+        // saveAll er greit, eller stol på @Transactional + dirty checking
+        userRepository.saveAll(expired);
+    }
+
 
     // Merk som no_show hvis fristen er passert og status ikke er attended/waitlist
     @Transactional

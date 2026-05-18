@@ -27,6 +27,7 @@ public class Event {
 
     private String location;
 
+   
     private Integer maxAttendees;
 
     private boolean isPublished;

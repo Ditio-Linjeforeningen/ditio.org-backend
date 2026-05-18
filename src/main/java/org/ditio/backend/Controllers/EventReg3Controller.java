@@ -1,6 +1,6 @@
 package org.ditio.backend.Controllers;
 
-import org.ditio.backend.EventReg2Service;
+//import org.ditio.backend.EventReg2Service;
 import org.ditio.backend.EventReg3Service;
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.EventReg2;

@@ -28,7 +28,7 @@ public class User {
     private String email;
 
     @Column(name = "quarantine_until")
-    private LocalDateTime quarantine_until;
+    private LocalDateTime quarantineUntil;
     
     //enum for rolle
     @Enumerated(EnumType.STRING)
@@ -42,7 +42,7 @@ public class User {
         this.navn = navn;
         this.email = email;
         this.role = role;
-        this.quarantine_until = quarantine_until;
+        this.quarantineUntil = quarantine_until;
     }
 
    /* @ManyToOne(fetch = FetchType.LAZY)
@@ -62,8 +62,8 @@ public class User {
     public UserRole getRole() { return role; }
     public void setRole(UserRole role) { this.role = role; }
 
-    public LocalDateTime getQuarantine_until() {return quarantine_until;}
+    public LocalDateTime getQuarantine_until() {return quarantineUntil;}
     public void setQuarantine_until(LocalDateTime quarantine_until) 
-    {this.quarantine_until = quarantine_until;}
+    {this.quarantineUntil = quarantine_until;}
 
 }
