@@ -1,10 +1,15 @@
 package org.ditio.backend.FeideUser;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+//import org.ditio.backend.EventReg2Service;
+import org.ditio.backend.EventReg3Service;
+import org.ditio.backend.Entities.EventReg2;
 import org.ditio.backend.Entities.User;
 import org.ditio.backend.Enums.UserRole;
+import org.ditio.backend.Repositories.EventReg2Repository;
 import org.ditio.backend.Repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,9 +23,11 @@ import org.springframework.stereotype.Service;
 public class UserDB extends OidcUserService {
 
     private final UserRepository userRepository;
+    private EventReg3Service eventReg3Service;
 
-    public UserDB(UserRepository userRepository) {
+    public UserDB(UserRepository userRepository, EventReg3Service eventReg3Service) {
         this.userRepository = userRepository;
+        this.eventReg3Service = eventReg3Service;
     }
 
     @Override   
@@ -42,7 +49,7 @@ public class UserDB extends OidcUserService {
                         return userRepository.save(existingUser);
                     })
                     .orElseGet(() -> {
-                        User newUser = new User(feideId, name, email, UserRole.USER);
+                        User newUser = new User(feideId, name, email, UserRole.USER, null);
                         return userRepository.save(newUser);
                     });
 
