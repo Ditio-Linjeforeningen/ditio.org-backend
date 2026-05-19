@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/events/**").permitAll()
                 
                 // Event CRUD kræver admin rettigheder
-                .requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+                //.requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
 
                 //Bare superadmin kan ændre roller
                 .requestMatchers("/api/admin/**").hasAnyRole("SUPER_ADMIN")

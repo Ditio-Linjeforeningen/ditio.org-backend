@@ -38,11 +38,11 @@ public class EventController {
     @GetMapping("/{eventId}")
     public Event getEvent(@PathVariable UUID eventId) {
         return eventRepository.findById(eventId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
     }
 
     //POST new event
-    @PostMapping
+    @PostMapping("/newEvent")
     //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public Event createEvent(@RequestBody Event event) {
         return eventRepository.save(event);
@@ -63,14 +63,14 @@ public class EventController {
                     event.setIsPublished(updatedEvent.getIsPublished());
                     return eventRepository.save(event);
                 })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
     }
 
     @DeleteMapping("/{eventId}")
     //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<Event>deleteEvent(@PathVariable UUID eventId) {
         Event event = eventRepository.findById(eventId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));
         eventRepository.delete(event);
         return ResponseEntity.ok(event);
     }
