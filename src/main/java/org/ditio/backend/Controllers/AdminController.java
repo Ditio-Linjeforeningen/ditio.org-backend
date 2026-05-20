@@ -2,7 +2,7 @@ package org.ditio.backend.Controllers;
 
 import java.util.Map;
 
-import org.ditio.backend.Enums.UserRole;
+import org.ditio.backend.Entities.Enums.UserRole;
 import org.ditio.backend.Repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

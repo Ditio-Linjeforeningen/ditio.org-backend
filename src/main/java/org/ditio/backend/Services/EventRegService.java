@@ -1,56 +1,45 @@
-package org.ditio.backend;
+package org.ditio.backend.Services;
+
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.Event;
-import org.ditio.backend.Entities.EventReg2;
+import org.ditio.backend.Entities.EventReg;
 import org.ditio.backend.Entities.User;
-import org.ditio.backend.Enums.Attendance_Values;
-import org.ditio.backend.Repositories.EventReg2Repository;
+import org.ditio.backend.Entities.Enums.Attendance_Values;
+import org.ditio.backend.Repositories.EventRegRepository;
 import org.ditio.backend.Repositories.EventRepository;
 import org.ditio.backend.Repositories.UserRepository;
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import com.nimbusds.oauth2.sdk.http.HTTPResponse;
 
 import jakarta.persistence.EntityNotFoundException;
 
-import java.net.http.HttpResponse;
-import java.time.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Collections;
-
-import static org.springframework.http.HttpStatus.*;
-
 @Service
-public class EventReg3Service {
+public class EventRegService {
 
     private static final int STEP_SECONDS = 30;
     private final Clock clock = Clock.systemUTC();
 
-    private final EventReg2Repository repository;
+    private final EventRegRepository repository;
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
     private final String secretBase32;
 
-    public EventReg3Service(
-            EventReg2Repository repository,
+    public EventRegService(
+            EventRegRepository repository,
             UserRepository userRepository,
             EventRepository eventRepository,
             // gjør Clock injiserbar for enklere testing
@@ -64,16 +53,16 @@ public class EventReg3Service {
     }
 
         
-    public List<EventReg2> findAll() {
+    public List<EventReg> findAll() {
         return repository.findAll();
     }
  
-    public EventReg2 findById(UUID id) {
+    public EventReg findById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "EventReg2 not found"));
     }
     
-    public void applyDeadline(EventReg2 reg) {
+    public void applyDeadline(EventReg reg) {
     UUID eventId = reg.getEventId();
     if (eventId == null) {
         throw new IllegalArgumentException("event_id må settes på EventReg2 før deadline kan beregnes");
@@ -93,7 +82,7 @@ public class EventReg3Service {
     reg.setDeadline(deadline);
 }
 
-    public void add_quarantine_until(EventReg2 reg) {
+    public void add_quarantine_until(EventReg reg) {
      UUID eventId = reg.getEventId();
         if (eventId == null) {
             throw new IllegalArgumentException("event_id må settes på EventReg2 før deadline kan beregnes");
@@ -111,7 +100,7 @@ public class EventReg3Service {
 }
 
     // Blokker registrering hvis bruker er i karantene
-    private void blockIfUserInQuarantine(EventReg2 reg) {
+    private void blockIfUserInQuarantine(EventReg reg) {
         if (reg.getUserId() == null) return;
 
         // Eksempel: hent bruker og sjekk karantene til (tilpass etter din User-modell)
@@ -124,10 +113,10 @@ public class EventReg3Service {
         });
     }
 
-   private void check_if_user_already_registered_to_event(EventReg2 newReg_input){
-    List<EventReg2> list_of_exisiting_eventRegs = repository.findAll();
+   private void check_if_user_already_registered_to_event(EventReg newReg_input){
+    List<EventReg> list_of_exisiting_eventRegs = repository.findAll();
     
-    for (EventReg2 i: list_of_exisiting_eventRegs){
+    for (EventReg i: list_of_exisiting_eventRegs){
         boolean sameUser = Objects.equals(i.getUserId(), newReg_input.getUserId());
         boolean sameEvent = Objects.equals(i.getEventId(), newReg_input.getEventId());
 
@@ -167,7 +156,7 @@ public class EventReg3Service {
     } */
 
     @Transactional
-    public EventReg2 create(EventReg2 reg) {
+    public EventReg create(EventReg reg) {
         // 1) Valider domene-regler
         //If now is before start_time
         applyDeadline(reg);
@@ -193,13 +182,13 @@ public class EventReg3Service {
     public void Auto_midnight_put_students_in_quarantine() {
         LocalDateTime now = LocalDateTime.now();
 
-        List<EventReg2> overdueList = repository.findByDeadlineBeforeAndAttStatusNot(now, Attendance_Values.no_show);
+        List<EventReg> overdueList = repository.findByDeadlineBeforeAndAttStatusNot(now, Attendance_Values.no_show);
 
         if (overdueList.isEmpty()) {
             return; // Ingen ting å gjøre
         }
 
-        for (EventReg2 att : overdueList) {
+        for (EventReg att : overdueList) {
             change_status_to_quarantine_with_date(att);
         }
         
@@ -208,7 +197,7 @@ public class EventReg3Service {
 
 
     // Selve logikken som endrer status og setter karantene-dato
-    private void change_status_to_quarantine_with_date(EventReg2 att) {
+    private void change_status_to_quarantine_with_date(EventReg att) {
         att.setAttStatus(Attendance_Values.no_show);
         att.setQuarantine_end(att.getDeadline().plusDays(30)); // Eksempel: 30 dager karantene
         repository.save(att);
@@ -238,7 +227,7 @@ public class EventReg3Service {
 
     // Merk som no_show hvis fristen er passert og status ikke er attended/waitlist
     @Transactional
-    public EventReg2 Manually_mark_student_as_quarantined_if_noshow(UUID id) {
+    public EventReg Manually_mark_student_as_quarantined_if_noshow(UUID id) {
         var reg = findById(id);
         LocalDateTime now = LocalDateTime.now(clock);
 
@@ -273,7 +262,7 @@ public class EventReg3Service {
 
     // Bekreft oppmøte med OTP
     @Transactional
-    public EventReg2 confirmAttendance(UUID id, String otpInput) {
+    public EventReg confirmAttendance(UUID id, String otpInput) {
 
         boolean valid = TimeBasedOnetimePassword.validateTOTP(secretBase32, otpInput);
         var reg = findById(id);
@@ -303,20 +292,20 @@ public class EventReg3Service {
 
 
     @Transactional
-    public EventReg2 update(EventReg2 reg) {
+    public EventReg update(EventReg reg) {
         // Legg inn ønskede valideringer og regelverk
         return repository.save(reg);
     }
 
     @Transactional
-    public EventReg2 delete(UUID id) {
+    public EventReg delete(UUID id) {
         var reg = findById(id);
         repository.delete(reg);
         return reg;
     }
 
     @Transactional
-    public List<EventReg2> deleteAll(){
+    public List<EventReg> deleteAll(){
         var all_regs = findAll();
         repository.deleteAll(all_regs);
             return all_regs;

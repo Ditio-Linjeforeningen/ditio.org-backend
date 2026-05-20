@@ -1,5 +1,6 @@
-package org.ditio.backend.FeideUser;
+package org.ditio.backend;
 
+import org.ditio.backend.Services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -13,25 +14,19 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     // forbindelse tiol UserDB for at kunne synkronisere brugerdata ved login
-    private final UserDB userDB;
+    private final UserService userDB;
     
-    public SecurityConfig(UserDB userDB) {
+    public SecurityConfig(UserService userDB) {
         this.userDB = userDB;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable()) //slå på i produktion
             .authorizeHttpRequests(auth -> auth
                 //Alle kan se events
                 .requestMatchers(org.springframework.http.HttpMethod.GET, "/events/**").permitAll()
-                
-                // Event CRUD kræver admin rettigheder
-                //.requestMatchers("/events/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
-
-                // Kun for test     
-                .requestMatchers("/feide/test").authenticated()
 
                 //Bare superadmin kan ændre roller
                 .requestMatchers("/api/admin/**").hasAnyRole("SUPER_ADMIN")

@@ -34,14 +34,12 @@ public class UserController {
 
     //Finder bruger baseret på e-mail
     @GetMapping("/{email}")
-    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public Optional<User> getUserByEmail(@PathVariable("email") String email) {
         return userRepository.findByEmail(email); 
     }
 
-    // finder alle brugere som er registret i databasen
-    // MÅ BESKYTTES BAK ADMIN LOGIN
-    
+    // finder alle brugere som er registret i databasen    
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public List<User> getAllUsers(@AuthenticationPrincipal OidcUser principal) {

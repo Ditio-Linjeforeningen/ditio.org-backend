@@ -1,81 +1,69 @@
 package org.ditio.backend.Controllers;
 
-//import org.ditio.backend.EventReg2Service;
-import org.ditio.backend.EventReg3Service;
-import org.ditio.backend.TimeBasedOnetimePassword;
-import org.ditio.backend.Entities.EventReg2;
 
-import org.ditio.backend.Entities.Event;
-import org.ditio.backend.Entities.User;
-
-import org.ditio.backend.Enums.Attendance_Values;
-import org.ditio.backend.Repositories.EventReg2Repository;
-import org.ditio.backend.Repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-
-import java.sql.Time;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
+import org.ditio.backend.Entities.EventReg;
+import org.ditio.backend.Services.EventRegService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-@RequestMapping("/EventReg3")
-public class EventReg3Controller {
+@RequestMapping("/EventReg")
+public class EventRegController {
 
-    private final EventReg3Service service;
+    private final EventRegService service;
 
-    public EventReg3Controller(EventReg3Service eventReg3Service) {
-        this.service = eventReg3Service;
+    public EventRegController(EventRegService eventRegService) {
+        this.service = eventRegService;
     }
 
     // OTP nåværende kode
     @GetMapping("/current")
-    public EventReg3Service.OtpResponse current() {
+    public EventRegService.OtpResponse current() {
         return service.currentOtp();
     }
 
     // GET all
     @GetMapping
-    public List<EventReg2> getAll() {
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    public List<EventReg> getAll() {
         return service.findAll();
     }
 
     // GET by id
     @GetMapping("/{id}")
-    public EventReg2 getEventReg2(@PathVariable UUID id) {
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    public EventReg getEventReg(@PathVariable UUID id) {
         return service.findById(id);
     }
 
     // POST create
     @PostMapping
-    public EventReg2 createEventReg2(@RequestBody EventReg2 eventReg2) {
-        return service.create(eventReg2);
+    public EventReg createEventReg(@RequestBody EventReg eventReg) {
+        return service.create(eventReg);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<EventReg2> deleteEventReg2(@PathVariable UUID id) {
+    public ResponseEntity<EventReg> deleteEventReg(@PathVariable UUID id) {
         return ResponseEntity.ok(service.delete(id));
     }
 
     @DeleteMapping("/Delete_All_eventRegs")
-    public ResponseEntity<List<EventReg2>> deleteAllEventRegs(){
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    public ResponseEntity<List<EventReg>> deleteAllEventRegs(){
         return ResponseEntity.ok(service.deleteAll());
     }
 
@@ -84,6 +72,7 @@ public class EventReg3Controller {
     
     //There is an automatic one as well in the service:
     @PutMapping("/Manual_quarantine/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<?> Manually_mark_student_as_quarantined(@PathVariable UUID id) {
 
         var saved = service.Manually_mark_student_as_quarantined_if_noshow(id);
