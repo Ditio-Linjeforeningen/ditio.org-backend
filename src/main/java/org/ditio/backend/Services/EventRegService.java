@@ -1,4 +1,4 @@
-package org.ditio.backend;
+package org.ditio.backend.Services;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import org.ditio.backend.TimeBasedOnetimePassword;
 import org.ditio.backend.Entities.Event;
 import org.ditio.backend.Entities.EventReg;
 import org.ditio.backend.Entities.User;
-import org.ditio.backend.Enums.Attendance_Values;
+import org.ditio.backend.Entities.Enums.Attendance_Values;
 import org.ditio.backend.Repositories.EventRegRepository;
 import org.ditio.backend.Repositories.EventRepository;
 import org.ditio.backend.Repositories.UserRepository;

@@ -3,7 +3,7 @@ package org.ditio.backend.Entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import org.ditio.backend.Enums.Attendance_Values;
+import org.ditio.backend.Entities.Enums.Attendance_Values;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -82,8 +82,4 @@ public class EventReg {
     public LocalDateTime getQuarantine_end(){return quarantine_end;}
     public void setQuarantine_end(LocalDateTime quarantine_end) 
     {this.quarantine_end = quarantine_end;}
-
-    /*public User getUser() { return user; }
-    public Event getEvent() { return event; }*/
-
 }

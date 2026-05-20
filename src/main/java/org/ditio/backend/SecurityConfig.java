@@ -1,5 +1,6 @@
-package org.ditio.backend.FeideUser;
+package org.ditio.backend;
 
+import org.ditio.backend.Services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -13,9 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     // forbindelse tiol UserDB for at kunne synkronisere brugerdata ved login
-    private final UserDB userDB;
+    private final UserService userDB;
     
-    public SecurityConfig(UserDB userDB) {
+    public SecurityConfig(UserService userDB) {
         this.userDB = userDB;
     }
 

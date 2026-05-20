@@ -2,16 +2,13 @@ package org.ditio.backend.Entities;
 
 import java.time.LocalDateTime;
 
-import org.ditio.backend.Enums.UserRole;
+import org.ditio.backend.Entities.Enums.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -44,11 +41,6 @@ public class User {
         this.role = role;
         this.quarantineUntil = quarantine_until;
     }
-
-   /* @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "event_reg_id", insertable = false, updatable = false)
-    private EventReg2 eventreg2;*/
-   
 
     //Getters og Setters
     public String getEmail() { return email; }

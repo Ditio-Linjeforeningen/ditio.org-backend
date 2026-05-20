@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.ditio.backend.Entities.EventReg;
-import org.ditio.backend.EventRegService;
+import org.ditio.backend.Services.EventRegService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
