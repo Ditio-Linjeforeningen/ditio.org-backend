@@ -1,7 +1,0 @@
-CREATE TABLE IF NOT EXISTS item (
-    id UUID PRIMARY KEY DEFAULT uuidv7(),
-    name TEXT NOT NULL,
-    quantity INTEGER NOT NULL DEFAULT 0
-);
-
-

@@ -1,16 +1,26 @@
 package org.ditio.backend.Entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.UUID;
+
 import org.ditio.backend.Enums.Attendance_Values;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name = "event_reg2")
-public class EventReg2 {
+@Table(name = "event_reg")
+public class EventReg {
 
     @Id
     @GeneratedValue
@@ -51,7 +61,7 @@ public class EventReg2 {
 
     
 
-    public EventReg2() {}
+    public EventReg() {}
 
     // getters/setters
     public UUID getEventRegId() { return event_reg_id; }

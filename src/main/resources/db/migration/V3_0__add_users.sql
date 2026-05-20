@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS users (
-    id VARCHAR(255) PRIMARY KEY,
-    navn VARCHAR(255),
-    email VARCHAR(255),
-    role VARCHAR(40) DEFAULT 'USER'
-);
