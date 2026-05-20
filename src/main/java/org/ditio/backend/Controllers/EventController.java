@@ -7,6 +7,7 @@ import org.ditio.backend.Entities.Event;
 import org.ditio.backend.Repositories.EventRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,14 +44,14 @@ public class EventController {
 
     //POST new event
     @PostMapping("/newEvent")
-    //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public Event createEvent(@RequestBody Event event) {
         return eventRepository.save(event);
     }
 
     //Update new event by id
     @PutMapping("/{eventId}")
-    //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public Event updateEvent(@PathVariable UUID eventId, @RequestBody Event updatedEvent) {
         return eventRepository.findById(eventId)
                 .map(event -> {
@@ -67,7 +68,7 @@ public class EventController {
     }
 
     @DeleteMapping("/{eventId}")
-    //@PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<Event>deleteEvent(@PathVariable UUID eventId) {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found"));

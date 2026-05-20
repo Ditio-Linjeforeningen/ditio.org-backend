@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.ditio.backend.Entities.EventReg;
 import org.ditio.backend.Services.EventRegService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,12 +37,14 @@ public class EventRegController {
 
     // GET all
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public List<EventReg> getAll() {
         return service.findAll();
     }
 
     // GET by id
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public EventReg getEventReg(@PathVariable UUID id) {
         return service.findById(id);
     }
@@ -59,6 +62,7 @@ public class EventRegController {
     }
 
     @DeleteMapping("/Delete_All_eventRegs")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<List<EventReg>> deleteAllEventRegs(){
         return ResponseEntity.ok(service.deleteAll());
     }
@@ -68,6 +72,7 @@ public class EventRegController {
     
     //There is an automatic one as well in the service:
     @PutMapping("/Manual_quarantine/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<?> Manually_mark_student_as_quarantined(@PathVariable UUID id) {
 
         var saved = service.Manually_mark_student_as_quarantined_if_noshow(id);
