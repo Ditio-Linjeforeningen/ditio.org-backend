@@ -21,13 +21,13 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Event registration table (renamed from event_reg2 to event_reg)
 CREATE TABLE IF NOT EXISTS event_reg (
-    event_reg_id UUID PRIMARY KEY, 
-    user_id VARCHAR(255) NOT NULL,  
-    event_id UUID NOT NULL,
+    event_reg_id UUID PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    event_id UUID NOT NULL REFERENCES event(event_id) ON DELETE CASCADE,
     att_status VARCHAR(50) NOT NULL,
     deadline TIMESTAMP,
     quarantine_end TIMESTAMP
-);
+    );
 
 -- Trigger function: Sync user quarantine from event_reg
 CREATE OR REPLACE FUNCTION sync_user_quarantine()
