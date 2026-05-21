@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
     quarantine_until TIMESTAMP
 );
 
--- Event registration table (renamed from event_reg2 to event_reg)
+-- Event registration table
 CREATE TABLE IF NOT EXISTS event_reg (
     event_reg_id UUID PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL REFERENCES users(id) ON DELETE CASCADE,
