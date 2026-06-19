@@ -152,16 +152,11 @@ public class TimeBasedOnetimePassword {
         long timeInterval = System.currentTimeMillis() / 1000 / TIME_STEP;
 
         // Check TOTP for current, previous, and next intervals
-        boolean matches = IntStream.of(-1, 0, 1)
+        return IntStream.of(-1, 0, 1)
                 .anyMatch(i -> generateTOTP(secretKey, timeInterval + i).equals(inputTOTP));
-        if (matches) {
-            return true;
-        }
-
-        return false;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    static void main(String[] args) throws InterruptedException {
         String orginalSecretKey = "IForgotMyPassword"; // :)
         String encodedSecretKey = encodeBase32(orginalSecretKey);
         String decodedSecretKey = decodeBase32(encodedSecretKey);
@@ -170,12 +165,12 @@ public class TimeBasedOnetimePassword {
         System.out.println("Base32 Encoded String: " + encodedSecretKey);
         System.out.println("Base32 Decoded String: " + decodedSecretKey);
 
-        String secret = encodedSecretKey; // This should be Base32 encoded
-        String freshTOTP = generateTOTP(secret);
+        // This should be Base32 encoded
+        String freshTOTP = generateTOTP(encodedSecretKey);
         System.out.println("Generated TOTP: " + freshTOTP);
-        System.out.println("Is valid? " + validateTOTP(secret, freshTOTP));
+        System.out.println("Is valid? " + validateTOTP(encodedSecretKey, freshTOTP));
 
         Thread.sleep(120000); // 2 minutes waiting
-        System.out.println("Is valid? " + validateTOTP(secret, freshTOTP));
+        System.out.println("Is valid? " + validateTOTP(encodedSecretKey, freshTOTP));
     }
 }

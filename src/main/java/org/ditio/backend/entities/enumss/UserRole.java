@@ -1,4 +1,4 @@
-package org.ditio.backend.entitiess.enumss;
+package org.ditio.backend.entities.enumss;
 
 public enum UserRole {
     USER,
