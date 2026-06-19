@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllers;
 
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,11 +1,11 @@
-package org.ditio.backend.Services;
+package org.ditio.backend.services;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ditio.backend.Entities.User;
-import org.ditio.backend.Entities.Enums.UserRole;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entities.User;
+import org.ditio.backend.entities.enumss.UserRole;
+import org.ditio.backend.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class UserService extends OidcUserService{
 
     private final UserRepository userRepository;
-    private EventRegService eventRegService;
+    private final EventRegService eventRegService;
 
     public UserService(UserRepository userRepository, EventRegService eventRegService) {
         this.userRepository = userRepository;

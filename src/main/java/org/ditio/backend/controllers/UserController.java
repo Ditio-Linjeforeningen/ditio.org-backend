@@ -1,10 +1,10 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllers;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.ditio.backend.Entities.User;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entities.User;
+import org.ditio.backend.repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -35,7 +35,7 @@ public class UserController {
     //Finder bruger baseret på e-mail
     @GetMapping("/{email}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
-    public Optional<User> getUserByEmail(@PathVariable("email") String email) {
+    public Optional<User> getUserByEmail(@PathVariable String email) {
         return userRepository.findByEmail(email); 
     }
 

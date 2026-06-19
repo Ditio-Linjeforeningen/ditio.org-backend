@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllers;
 
 
 import java.util.LinkedHashMap;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.ditio.backend.Entities.EventReg;
-import org.ditio.backend.Services.EventRegService;
+import org.ditio.backend.entities.EventReg;
+import org.ditio.backend.services.EventRegService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -89,7 +89,7 @@ public class EventRegController {
     // Bekreft oppmøte med OTP
     @PutMapping("/Attended/{id}")
     public ResponseEntity<?> user_attendance_reg(@RequestBody Verify_Attendance_Code_DTO body,
-                                                 @PathVariable("id") UUID id) {
+                                                 @PathVariable UUID id) {
         
         var saved = service.confirmAttendance(id, body.code());
           Map<String, Object> payload = new LinkedHashMap<>();

@@ -1,9 +1,9 @@
-package org.ditio.backend.Entities;
+package org.ditio.backend.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import org.ditio.backend.Entities.Enums.Attendance_Values;
+import org.ditio.backend.entities.enumss.Attendance_Values;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -46,7 +46,7 @@ public class EventReg {
     private LocalDateTime deadline;
 
     @JsonProperty("quarantine_end")
-    @Column(name = "quarantine_end", nullable = true)
+    @Column(name = "quarantine_end")
     private LocalDateTime quarantine_end;
 
 
