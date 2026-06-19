@@ -1,11 +1,11 @@
-package org.ditio.backend.Services;
+package org.ditio.backend.servicess;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ditio.backend.Entities.User;
-import org.ditio.backend.Entities.Enums.UserRole;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entitiess.User;
+import org.ditio.backend.entitiess.enumss.UserRole;
+import org.ditio.backend.repositoriess.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;

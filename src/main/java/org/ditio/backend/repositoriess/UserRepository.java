@@ -1,10 +1,10 @@
-package org.ditio.backend.Repositories;
+package org.ditio.backend.repositoriess;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import org.ditio.backend.Entities.User;
+import org.ditio.backend.entitiess.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

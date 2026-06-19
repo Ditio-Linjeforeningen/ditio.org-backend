@@ -1,8 +1,8 @@
-package org.ditio.backend.Entities;
+package org.ditio.backend.entitiess;
 
 import java.time.LocalDateTime;
 
-import org.ditio.backend.Entities.Enums.UserRole;
+import org.ditio.backend.entitiess.enumss.UserRole;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,9 +1,9 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllerss;
 
 import java.util.Map;
 
-import org.ditio.backend.Entities.Enums.UserRole;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entitiess.enumss.UserRole;
+import org.ditio.backend.repositoriess.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;

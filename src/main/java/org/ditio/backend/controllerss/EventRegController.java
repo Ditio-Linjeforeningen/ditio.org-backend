@@ -1,4 +1,4 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllerss;
 
 
 import java.util.LinkedHashMap;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.ditio.backend.Entities.EventReg;
-import org.ditio.backend.Services.EventRegService;
+import org.ditio.backend.entitiess.EventReg;
+import org.ditio.backend.servicess.EventRegService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;

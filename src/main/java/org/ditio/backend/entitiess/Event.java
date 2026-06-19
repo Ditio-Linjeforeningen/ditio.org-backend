@@ -1,4 +1,4 @@
-package org.ditio.backend.Entities;
+package org.ditio.backend.entitiess;
 
 import jakarta.persistence.*;
 

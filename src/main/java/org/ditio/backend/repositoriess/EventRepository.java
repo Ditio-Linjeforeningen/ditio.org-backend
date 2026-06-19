@@ -1,8 +1,8 @@
-package org.ditio.backend.Repositories;
+package org.ditio.backend.repositoriess;
 
 import java.util.UUID;
 
-import org.ditio.backend.Entities.Event;
+import org.ditio.backend.entitiess.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EventRepository extends JpaRepository<Event, UUID> {

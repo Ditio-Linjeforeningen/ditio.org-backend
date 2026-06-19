@@ -1,4 +1,4 @@
-package org.ditio.backend.Services;
+package org.ditio.backend.servicess;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -8,13 +8,13 @@ import java.util.Objects;
 import java.util.UUID;
 
 import org.ditio.backend.TimeBasedOnetimePassword;
-import org.ditio.backend.Entities.Event;
-import org.ditio.backend.Entities.EventReg;
-import org.ditio.backend.Entities.User;
-import org.ditio.backend.Entities.Enums.Attendance_Values;
-import org.ditio.backend.Repositories.EventRegRepository;
-import org.ditio.backend.Repositories.EventRepository;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entitiess.Event;
+import org.ditio.backend.entitiess.EventReg;
+import org.ditio.backend.entitiess.User;
+import org.ditio.backend.entitiess.enumss.Attendance_Values;
+import org.ditio.backend.repositoriess.EventRegRepository;
+import org.ditio.backend.repositoriess.EventRepository;
+import org.ditio.backend.repositoriess.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import static org.springframework.http.HttpStatus.CONFLICT;

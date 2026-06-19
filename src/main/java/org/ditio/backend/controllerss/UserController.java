@@ -1,10 +1,10 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllerss;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.ditio.backend.Entities.User;
-import org.ditio.backend.Repositories.UserRepository;
+import org.ditio.backend.entitiess.User;
+import org.ditio.backend.repositoriess.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -1,10 +1,10 @@
-package org.ditio.backend.Controllers;
+package org.ditio.backend.controllerss;
 
 import java.util.List;
 import java.util.UUID;
 
-import org.ditio.backend.Entities.Event;
-import org.ditio.backend.Repositories.EventRepository;
+import org.ditio.backend.entitiess.Event;
+import org.ditio.backend.repositoriess.EventRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -1,9 +1,9 @@
-package org.ditio.backend.Entities;
+package org.ditio.backend.entitiess;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import org.ditio.backend.Entities.Enums.Attendance_Values;
+import org.ditio.backend.entitiess.enumss.Attendance_Values;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
